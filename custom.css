@@ -1,0 +1,987 @@
+/* HORIZON HUB v64 — Hybrid Academic + Gradient visual refresh.
+   Presentation-only layer: existing HTML IDs, navigation, forms and JS behavior are preserved. */
+:root{
+  --maroon:#76223a;
+  --maroon-dark:#511629;
+  --navy:#20263a;
+  --cream:#f4eee8;
+  --pink:#f2e4e5;
+  --line:#e9dcd6;
+  --muted:#77717a;
+  --green:#4c8a54;
+  --gold:#a87924;
+}
+body{background:#f4eee8;color:#262536}
+#appPage{background:linear-gradient(135deg,#f7f1ec 0%,#f1e8e3 52%,#f8f3ef 100%)}
+#appPage .app-header{background:rgba(255,250,247,.94)!important;border-bottom:1px solid rgba(118,34,58,.12)!important;box-shadow:0 5px 22px rgba(54,22,31,.055)!important;backdrop-filter:blur(14px)}
+#appPage .brand-small b{color:#351b2a}
+#appPage .brand-small b span{color:#8c304b}
+#appPage .global-search{background:#fffaf7!important;border-color:#eadbd5!important;box-shadow:0 3px 12px rgba(69,26,39,.035)}
+#appPage .global-search:focus-within{border-color:#b77b89!important;box-shadow:0 0 0 3px rgba(118,34,58,.08)}
+#appPage .main-content{background:transparent!important}
+#appPage .sidebar{background:linear-gradient(165deg,#632039 0%,#792c45 48%,#4d172d 100%)!important;box-shadow:12px 0 34px rgba(54,13,30,.12)!important}
+#appPage .sidebar .nav-button{border-radius:12px!important;transition:background .2s ease,transform .2s ease}
+#appPage .sidebar .nav-button.active{background:linear-gradient(105deg,#f8e9e7,#fff7f1)!important;color:#70233d!important;box-shadow:0 5px 16px rgba(35,5,18,.12),inset 3px 0 0 #d9a2a7!important}
+#appPage .sidebar .nav-button:hover{transform:translateX(2px)!important;background:rgba(255,255,255,.13)!important}
+#appPage .sidebar .nav-button.active:hover{background:linear-gradient(105deg,#f8e9e7,#fff7f1)!important}
+#appPage .sidebar .sidebar-motto{background:linear-gradient(135deg,rgba(255,255,255,.14),rgba(255,255,255,.05))!important;border:1px solid rgba(255,255,255,.18)!important;border-radius:16px!important}
+#appPage .sidebar .sidebar-profile-shortcut,#appPage .sidebar .sidebar-settings-shortcut,#appPage .sidebar .drawer-logout{border-radius:12px!important}
+#appPage .student-dashboard{gap:18px}
+#appPage .home-campus-banner{min-height:190px!important;border:0!important;border-radius:22px!important;background-image:linear-gradient(100deg,rgba(48,16,31,.76),rgba(100,31,54,.34) 55%,rgba(34,29,40,.08)),url("assets/kampus.jpg")!important;box-shadow:0 14px 34px rgba(66,22,39,.14)!important}
+#appPage .home-campus-caption{left:28px!important;bottom:22px!important}
+#appPage .home-campus-caption span{color:#ffe8e4!important;letter-spacing:2.2px!important}
+#appPage .home-campus-caption b{color:#fff8f1!important;text-shadow:0 2px 12px rgba(0,0,0,.2)}
+#appPage .dashboard-welcome{padding:8px 5px 10px!important}
+#appPage .dashboard-welcome .eyebrow{color:#8b3a50!important}
+#appPage .dashboard-welcome h1{color:#2d2632!important}
+#appPage .dashboard-welcome h1 em{color:#853149!important}
+#appPage .overview-strip{background:rgba(255,252,249,.9)!important;border:1px solid rgba(220,197,190,.75)!important;border-radius:18px!important;box-shadow:0 8px 25px rgba(65,27,39,.055)!important;backdrop-filter:blur(10px)}
+#appPage .overview-item{border-color:#eadbd5!important}
+#appPage .overview-item:hover{background:#fff5f1!important;border-radius:12px}
+#appPage .overview-icon{color:#853149!important}
+#appPage .overview-item b{color:#7c2942!important}
+#appPage .dashboard-section{background:rgba(255,253,250,.94)!important;border:1px solid rgba(226,210,203,.82)!important;border-radius:19px!important;box-shadow:0 9px 25px rgba(58,25,35,.055)!important;backdrop-filter:blur(8px)}
+#appPage .dashboard-section-heading{border-color:#eee2dc!important}
+#appPage .dashboard-section-heading h2{color:#2d2632!important}
+#appPage .dashboard-section-heading h2 em{color:#8b344d!important}
+#appPage .dashboard-section-heading .eyebrow{color:#9a5264!important}
+#appPage .text-button{color:#853149!important;font-weight:700}
+#appPage .home-task-date{background:#f5e7e5!important;color:#7d2c45!important}
+#appPage .progress-track{background:#eee1dc!important}
+#appPage .progress-track span{background:linear-gradient(90deg,#72223d,#c47c87)!important}
+#appPage .today-class-time{color:#813149!important}
+#appPage .today-class-dot{background:#b66b7b!important}
+#appPage .loan-status.pending{background:linear-gradient(135deg,#fff5e8,#f9eadb)!important}
+#appPage .loan-status.approved{background:linear-gradient(135deg,#edf5ed,#e2eee3)!important}
+#appPage .loan-status.rejected{background:linear-gradient(135deg,#fbeded,#f5dfe3)!important}
+#appPage .primary-button{background:linear-gradient(110deg,#8c304b,#642039)!important;box-shadow:0 7px 18px rgba(118,34,58,.18)!important}
+#appPage .outline-button{border-color:#d9bdc0!important;color:#76223a!important;background:#fffaf7!important}
+#appPage .explore-link-grid button{background:linear-gradient(145deg,#fffdfa,#f8eeea)!important;border:1px solid #eadbd5!important;border-radius:15px!important;box-shadow:0 5px 15px rgba(60,22,36,.04)}
+#appPage .explore-icon{background:#f2e1e2!important;color:#7b2943!important;border-radius:12px!important}
+#appPage .content-card{background:rgba(255,253,250,.96)!important;border-color:#eadbd5!important;box-shadow:0 7px 22px rgba(60,22,36,.045)!important}
+#appPage .page-heading h1 em{color:#853149!important}
+#appPage .tag{background:#f4e6e4!important;color:#7a2942!important}
+@media(max-width:600px){
+  #appPage .main-content{background:transparent!important;padding:15px 13px 28px!important}
+  #appPage .home-campus-banner{min-height:126px!important;border-radius:16px!important;background-position:center 48%!important}
+  #appPage .home-campus-caption{left:15px!important;bottom:13px!important}
+  #appPage .home-campus-caption span{font-size:7px!important;letter-spacing:1.3px!important}
+  #appPage .home-campus-caption b{font-size:17px!important}
+  #appPage .overview-strip{padding:6px 2px!important;border-radius:14px!important}
+  #appPage .overview-item{justify-content:flex-start!important;gap:6px!important;padding:9px 5px!important}
+  #appPage .overview-item small{white-space:normal!important;line-height:1.25}
+  #appPage .dashboard-section{border-radius:16px!important;padding:16px!important}
+  #appPage .dashboard-section-heading h2{font-size:19px!important}
+}
+/* HORIZON HUB v65 — lending workflow components */
+.inventory-admin-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 18px}.inventory-admin-stat{background:linear-gradient(135deg,#fff8f7,#f8e9eb);border:1px solid #ead8dc;border-radius:16px;padding:17px;display:flex;flex-direction:column;gap:5px}.inventory-admin-stat b{font:700 27px Georgia,serif;color:#971935}.inventory-admin-stat span{font-size:12px;color:#777987}.inventory-admin-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.inventory-admin-grid .inventory-item,.inventory-grid .inventory-item{min-width:0}.inventory-admin-grid .inventory-item strong,.inventory-grid .inventory-item strong{white-space:nowrap}.request-card .action-row{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}.request-card .action-row button{min-height:39px}.status.muted{background:#f0eef0;color:#68636b}.inventory-request-card .notice{margin:0 0 4px}.inventory-admin-summary+.content-card{margin-top:0}.booking-form .notice{margin:0}.student-only[hidden],.admin-only[hidden]{display:none!important}
+@media(max-width:700px){.inventory-admin-summary{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.inventory-admin-stat{padding:12px 9px}.inventory-admin-stat b{font-size:23px}.inventory-admin-stat span{font-size:10px;line-height:1.35}.inventory-admin-grid{grid-template-columns:1fr}.request-card .action-row button{flex:1 1 130px}.page-heading .notice{font-size:12px}}
+
+/* HORIZON HUB v66 — Admin dashboard contrast + mobile polish.
+   Kept in custom.css so the project uses one base stylesheet and one override stylesheet. */
+#appPage #adminDashboard .admin-welcome,
+#appPage #adminDashboard .admin-welcome.content-card{
+  position:relative!important;
+  isolation:isolate;
+  overflow:hidden;
+  display:block;
+  min-height:190px;
+  padding:clamp(22px,4vw,34px)!important;
+  margin:0 0 18px!important;
+  color:#fff!important;
+  background:linear-gradient(115deg,#64172f 0%,#8f2947 58%,#a7465e 100%)!important;
+  border:1px solid rgba(255,255,255,.16)!important;
+  border-radius:22px!important;
+  box-shadow:0 14px 34px rgba(92,25,48,.16)!important;
+}
+#appPage #adminDashboard .admin-welcome::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  width:260px;height:260px;
+  right:-55px;top:-115px;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:50%;
+  box-shadow:0 0 0 28px rgba(255,255,255,.045),0 0 0 58px rgba(255,255,255,.035);
+}
+#appPage #adminDashboard .admin-welcome::after{
+  content:"H";
+  position:absolute;
+  z-index:-1;
+  right:28px;bottom:-55px;
+  color:rgba(255,255,255,.075);
+  font:700 230px/1 Georgia,serif;
+  pointer-events:none;
+}
+#appPage #adminDashboard .admin-welcome .tag{
+  display:inline-flex;
+  background:rgba(255,255,255,.15)!important;
+  color:#fff!important;
+  border:1px solid rgba(255,255,255,.25)!important;
+  letter-spacing:.09em;
+}
+#appPage #adminDashboard .admin-welcome h2{
+  position:relative;
+  max-width:620px;
+  margin:15px 0 8px!important;
+  color:#fff!important;
+  font-family:Georgia,serif;
+  font-size:clamp(25px,4vw,36px);
+  line-height:1.15;
+  text-shadow:0 2px 14px rgba(35,5,17,.16);
+}
+#appPage #adminDashboard .admin-welcome p{
+  position:relative;
+  max-width:590px;
+  color:rgba(255,255,255,.9)!important;
+  font-size:clamp(13px,1.5vw,15px);
+  line-height:1.65;
+}
+#appPage #adminDashboard .admin-stat-grid{
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:14px;
+  margin:18px 0;
+}
+#appPage #adminDashboard .admin-stat-card{
+  min-width:0;
+  min-height:142px;
+  justify-content:space-between;
+  padding:20px!important;
+  border:1px solid rgba(226,210,203,.9)!important;
+  border-radius:19px!important;
+  background:rgba(255,253,250,.97)!important;
+  box-shadow:0 8px 24px rgba(58,25,35,.055)!important;
+}
+#appPage #adminDashboard .admin-stat-card small{font-size:13px;line-height:1.4;color:#71666a}
+#appPage #adminDashboard .admin-stat-card b{font-size:32px;line-height:1.1;color:#8c2441}
+#appPage #adminDashboard .admin-stat-card span{font-size:12px;line-height:1.4;color:#91858a}
+#appPage #adminDashboard .home-columns{gap:16px;margin-top:16px}
+#appPage #adminDashboard .home-columns>.content-card{min-width:0;border-radius:18px!important}
+@media(max-width:900px){
+  #appPage #adminDashboard .admin-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:600px){
+  #appPage #adminDashboard .page-heading{margin:0 0 18px}
+  #appPage #adminDashboard .page-heading h1{font-size:clamp(32px,9vw,42px);line-height:1.08}
+  #appPage #adminDashboard .page-heading>p:last-child{font-size:13px;line-height:1.55}
+  #appPage #adminDashboard .admin-welcome,
+  #appPage #adminDashboard .admin-welcome.content-card{min-height:166px;padding:21px!important;border-radius:18px!important}
+  #appPage #adminDashboard .admin-welcome h2{font-size:25px;max-width:90%}
+  #appPage #adminDashboard .admin-welcome p{max-width:88%;font-size:12px;line-height:1.55}
+  #appPage #adminDashboard .admin-welcome::after{right:4px;bottom:-34px;font-size:170px}
+  #appPage #adminDashboard .admin-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:14px 0}
+  #appPage #adminDashboard .admin-stat-card{min-height:132px;padding:15px 14px!important;border-radius:16px!important;gap:8px}
+  #appPage #adminDashboard .admin-stat-card small{font-size:12px}
+  #appPage #adminDashboard .admin-stat-card b{font-size:29px}
+  #appPage #adminDashboard .admin-stat-card span{font-size:11px}
+  #appPage #adminDashboard .home-columns{grid-template-columns:1fr;gap:12px}
+}
+
+/* v67 — live inventory availability feedback */
+#assetStockAvailability.is-available{background:#f0f7f1;border-color:#cfe5d3;color:#315f3b}
+#assetStockAvailability.is-unavailable{background:#fff1f1;border-color:#efcaca;color:#922b3b}
+#appPage #adminDashboard .admin-quick-actions{align-items:center}
+#appPage #adminDashboard .admin-quick-actions .primary-button,
+#appPage #adminDashboard .admin-quick-actions .outline-button{min-height:42px}
+@media(max-width:600px){#appPage #adminDashboard .admin-quick-actions{display:grid;grid-template-columns:1fr}#appPage #adminDashboard .admin-quick-actions button{width:100%}}
+
+/* v68 — Inventory catalog: inline SVG cards, live demo stock and detail modal */
+.inventory-toolbar{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(150px,.8fr);gap:12px;align-items:end;margin:16px 0 18px}
+.inventory-toolbar label{display:flex;flex-direction:column;gap:7px;font-size:12px;font-weight:700;color:var(--navy,#25283a)}
+.inventory-toolbar input,.inventory-toolbar select{width:100%;min-height:44px;border:1px solid #e6d9dc;border-radius:11px;background:#fffdfd;padding:10px 12px;color:#25283a;font:inherit;font-weight:400;outline:none}
+.inventory-toolbar input:focus,.inventory-toolbar select:focus{border-color:#971935;box-shadow:0 0 0 3px rgba(151,25,53,.09)}
+.inventory-item-v68{display:block;padding:0;overflow:hidden;transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease}
+.inventory-item-v68:hover{border-color:#c98b99;box-shadow:0 8px 22px rgba(68,31,42,.07);transform:translateY(-1px)}
+.inventory-card-main{width:100%;display:flex;align-items:center;gap:13px;padding:16px;border:0;background:transparent;text-align:left;color:inherit;cursor:pointer;min-width:0}
+.inventory-card-main:focus-visible,.inventory-quick-request:focus-visible{outline:3px solid rgba(151,25,53,.25);outline-offset:-3px}
+.inventory-icon{width:54px;height:54px;display:grid;place-items:center;border-radius:15px;background:#faecef;color:#971935;flex:0 0 54px}
+.asset-svg{width:31px;height:31px;display:block}
+.inventory-copy{display:flex;flex-direction:column;gap:5px;min-width:0;flex:1}
+.inventory-copy b{font-size:16px;line-height:1.25;color:#25283a}
+.inventory-copy small{font-size:11px;line-height:1.4;color:#777987}
+.inventory-availability{display:inline-flex;align-items:center;gap:6px;width:max-content;max-width:100%;font-size:11px;font-weight:700;line-height:1.35}
+.inventory-availability:before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;flex:0 0 7px}
+.inventory-availability.available{color:#27835b}
+.inventory-availability.unavailable{color:#a33a4b}
+.inventory-card-chevron{font-size:25px;line-height:1;color:#971935;padding:0 2px 3px 0}
+.inventory-quick-request{display:block;width:calc(100% - 32px);margin:0 16px 14px;padding:9px 12px;border:1px solid #ead5da;border-radius:10px;background:#fff7f8;color:#971935;font-size:12px;font-weight:700;cursor:pointer}
+.inventory-quick-request:hover{background:#f8e9ec}
+.inventory-empty{grid-column:1/-1;padding:20px;border:1px dashed #e4d4d8;border-radius:14px;color:#777987;background:#fffdfd;line-height:1.6}
+.asset-detail-modal{max-width:540px;max-height:min(88vh,850px);overflow:auto}
+.asset-detail-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding-right:26px;margin:8px 0 16px}
+.asset-detail-heading h2{margin:0;color:#25283a;font:700 27px Georgia,serif}
+.asset-detail-heading p{margin:6px 0 0;color:#777987;font-size:13px}
+.asset-detail-photo,.asset-detail-illustration{width:100%;height:190px;object-fit:contain;object-position:center;border-radius:16px;background:#fbf1f2;padding:16px;margin:0 0 16px}
+.asset-detail-illustration{display:grid;place-items:center;color:#971935}
+.asset-svg-large{width:112px;height:112px;stroke-width:1.25}
+.asset-detail-description{color:#626574;line-height:1.6;font-size:14px}
+.asset-detail-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:16px 0}
+.asset-detail-stats>div{display:flex;flex-direction:column;gap:4px;padding:13px 10px;border:1px solid #eadde0;border-radius:13px;background:#fffafa;min-width:0}
+.asset-detail-stats strong{font:700 25px Georgia,serif;color:#971935}
+.asset-detail-stats span,.asset-detail-meta span{font-size:11px;line-height:1.35;color:#777987}
+.asset-detail-meta{display:grid;gap:0;border:1px solid #eadde0;border-radius:13px;overflow:hidden;margin:14px 0}
+.asset-detail-meta>div{display:flex;justify-content:space-between;gap:12px;padding:12px 14px;border-bottom:1px solid #eee3e5}
+.asset-detail-meta>div:last-child{border-bottom:0}
+.asset-detail-meta b{font-size:12px;text-align:right;color:#303244;max-width:62%}
+.asset-detail-modal .notice{font-size:12px;line-height:1.55}
+.asset-detail-modal .modal-actions{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;margin-top:16px}
+.asset-detail-modal .modal-actions button:disabled{opacity:.5;cursor:not-allowed}
+@media(max-width:600px){
+ .inventory-toolbar{grid-template-columns:1fr;gap:10px}
+ .inventory-card-main{padding:14px;gap:11px}
+ .inventory-icon{width:48px;height:48px;flex-basis:48px}
+ .inventory-copy b{font-size:15px}
+ .inventory-detail-modal{padding:20px}
+ .asset-detail-modal{width:calc(100% - 24px);padding:22px 18px}
+ .asset-detail-heading h2{font-size:24px}
+ .asset-detail-photo,.asset-detail-illustration{height:160px}
+ .asset-detail-stats{gap:6px}
+ .asset-detail-stats>div{padding:11px 8px}
+ .asset-detail-stats strong{font-size:22px}
+ .asset-detail-stats span{font-size:10px}
+ .asset-detail-meta>div{padding:11px 12px}
+}
+
+
+/* v71: Edit jadwal as a modal — no page scrolling required */
+body.schedule-modal-open {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+body.schedule-modal-open::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  background: rgba(25, 20, 23, 0.58);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+.schedule-editor-card.is-modal {
+  position: fixed !important;
+  z-index: 9999 !important;
+  top: 50% !important;
+  left: 50% !important;
+  right: auto !important;
+  bottom: auto !important;
+  width: min(680px, calc(100vw - 32px)) !important;
+  max-width: calc(100vw - 32px) !important;
+  max-height: min(86dvh, 820px) !important;
+  margin: 0 !important;
+  padding: clamp(18px, 4vw, 30px) !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain;
+  transform: translate(-50%, -50%) !important;
+  box-shadow: 0 24px 80px rgba(20, 15, 18, .28) !important;
+  border: 1px solid rgba(151, 25, 53, .18);
+  border-radius: 22px !important;
+}
+.schedule-editor-card.is-modal .section-title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.schedule-modal-close {
+  display: none;
+  flex: 0 0 auto;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(151, 25, 53, .16);
+  border-radius: 50%;
+  background: #f8edf0;
+  color: #971935;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+.schedule-editor-card.is-modal .schedule-modal-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 640px) {
+  .schedule-editor-card.is-modal {
+    width: calc(100vw - 24px) !important;
+    max-width: calc(100vw - 24px) !important;
+    max-height: 82dvh !important;
+    padding: 18px !important;
+    border-radius: 20px !important;
+  }
+  .schedule-editor-card.is-modal .form-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .schedule-editor-card.is-modal .schedule-editor-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* v72: Keep the schedule editor out of the page layout; open it only as a modal */
+.schedule-editor-card {
+  display: none !important;
+}
+.schedule-editor-card.is-modal {
+  display: block !important;
+}
+.schedule-results-heading {
+  align-items: center;
+  gap: 14px;
+}
+.schedule-heading-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.schedule-add-button {
+  white-space: nowrap;
+  min-height: 44px;
+}
+@media (max-width: 640px) {
+  .schedule-results-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .schedule-heading-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .schedule-add-button {
+    flex: 1 1 auto;
+  }
+}
+
+/* v74 — Academic Calendar (student view + admin management) */
+.academic-calendar-card{padding:clamp(16px,3vw,26px)}
+.academic-calendar-toolbar{display:flex;align-items:end;justify-content:space-between;gap:14px;margin-bottom:18px;flex-wrap:wrap}
+.academic-calendar-toolbar label{display:flex;flex-direction:column;gap:7px;min-width:min(100%,230px);font-weight:700;color:var(--navy)}
+.academic-calendar-toolbar select{min-height:44px;padding:10px 13px;border:1px solid #e6d7dc;border-radius:12px;background:#fff;color:var(--navy);font:inherit}
+.academic-event-list{display:grid;gap:12px}
+.academic-event-item{display:grid;grid-template-columns:minmax(125px,170px) minmax(0,1fr) auto;align-items:start;gap:14px;padding:16px;border:1px solid #eee2e5;border-radius:16px;background:linear-gradient(120deg,#fff 0%,#fffaf8 100%)}
+.academic-event-date{font-weight:800;color:var(--maroon,#8e1734);font-size:.9rem;line-height:1.5}
+.academic-event-copy{min-width:0}.academic-event-copy .tag{display:inline-flex;margin-bottom:6px}.academic-event-copy h3{margin:0 0 5px;color:var(--navy);font-size:1rem}.academic-event-copy p{margin:0;color:#6d6870;font-size:.9rem;line-height:1.5}
+.academic-delete{white-space:nowrap;align-self:center}
+@media(max-width:650px){.academic-event-item{grid-template-columns:1fr;gap:8px;padding:14px}.academic-event-date{font-size:.85rem}.academic-delete{justify-self:start}.academic-calendar-toolbar{align-items:stretch}.academic-calendar-toolbar label{width:100%}}
+
+/* v75 — visual month-grid academic calendar */
+.academic-calendar-toolbar{display:grid;grid-template-columns:44px 1fr 44px;align-items:center;gap:12px;margin-bottom:16px}
+.academic-month-title{text-align:center}.academic-month-title h2{margin:0 0 7px;color:var(--navy);font-size:clamp(1.15rem,2.4vw,1.55rem)}
+.academic-calendar-weekdays,.academic-calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.academic-calendar-weekdays{margin-bottom:7px}.academic-calendar-weekdays span{text-align:center;padding:8px 2px;color:#82757a;font-size:.78rem;font-weight:800}
+.academic-day{position:relative;min-width:0;min-height:76px;padding:9px 5px;border:1px solid #eee3e6;border-radius:12px;background:#fffaf9;color:var(--navy);display:flex;flex-direction:column;align-items:center;gap:7px;font:inherit;cursor:pointer;transition:.15s}
+.academic-day.empty{visibility:hidden;border:0;background:transparent}.academic-day.selected{border:2px solid var(--maroon,#8e1734);background:#f8eaf0;box-shadow:0 3px 10px #68172a12}.academic-day.has-events{background:linear-gradient(160deg,#fff 0%,#fff4f0 100%)}.academic-day-number{font-weight:800;font-size:.94rem}.academic-day-dots{display:flex;gap:3px;min-height:6px}.academic-day-dots i{width:5px;height:5px;border-radius:50%;background:var(--maroon,#8e1734);display:block}.academic-day-count{font-size:.62rem;color:#8b5968;line-height:1.1;text-align:center}.academic-selected-heading{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:22px 0 12px;flex-wrap:wrap}.academic-selected-heading h3{margin:0;color:var(--navy);font-size:1rem}
+@media(max-width:650px){.academic-calendar-weekdays,.academic-calendar-grid{gap:3px}.academic-day{min-height:58px;padding:7px 1px;border-radius:9px;gap:5px}.academic-day-number{font-size:.82rem}.academic-day-count{font-size:.52rem}.academic-day-dots i{width:4px;height:4px}.academic-calendar-toolbar{grid-template-columns:40px 1fr 40px}.academic-selected-heading{align-items:flex-start;flex-direction:column}}
+
+/* v76 — refined navigation, touch feedback and consistent modal surfaces */
+#appPage .sidebar .nav-button{position:relative;min-height:49px!important;gap:13px!important;padding:11px 13px!important;border-radius:14px!important;transition:background .22s ease,transform .22s ease,box-shadow .22s ease!important}
+#appPage .sidebar .nav-button .icon-svg{width:21px!important;height:21px!important;flex:0 0 21px!important;stroke-width:1.75!important;opacity:.96}
+#appPage .sidebar .nav-button:not(.active):active{transform:scale(.985)!important;background:rgba(255,255,255,.16)!important}
+#appPage .sidebar .nav-button.active{box-shadow:0 7px 18px rgba(27,4,14,.16),inset 3px 0 0 #e6b5bd!important}
+#appPage .sidebar .drawer-brand{padding-bottom:20px!important;margin-bottom:12px!important}
+#appPage .sidebar .drawer-close{width:38px!important;height:38px!important;transition:transform .2s ease,background .2s ease!important}
+#appPage .sidebar .drawer-close:active{transform:scale(.92)!important}
+#appPage .drawer-overlay{background:rgba(22,9,15,.48)!important;backdrop-filter:blur(5px)!important;-webkit-backdrop-filter:blur(5px)!important;transition:opacity .28s ease,visibility .28s ease!important}
+#appPage .sidebar{transition:transform .32s cubic-bezier(.22,.78,.25,1)!important}
+#appPage .sidebar-settings-shortcut .icon-svg{width:18px;height:18px;flex:0 0 18px;color:#f0b8c5}
+#appPage .sidebar .drawer-logout:active,#appPage .sidebar-settings-shortcut:active{transform:scale(.985)}
+#appPage .modal-backdrop{background:rgba(28,13,20,.56)!important;backdrop-filter:blur(5px)!important;-webkit-backdrop-filter:blur(5px)!important;padding:18px!important}
+#appPage .class-modal{border:1px solid rgba(118,34,58,.12)!important;border-radius:24px!important;box-shadow:0 28px 90px rgba(25,7,15,.3)!important;animation:hhModalIn .24s cubic-bezier(.2,.8,.2,1) both}
+#appPage .modal-close{width:40px!important;height:40px!important;border-radius:50%!important;background:#f7e9e8!important;color:#76223a!important;border:1px solid #ead3d3!important;transition:transform .18s ease,background .18s ease!important}
+#appPage .modal-close:active{transform:scale(.92)}
+#appPage button,#appPage a.primary-button{ -webkit-tap-highlight-color:transparent }
+@keyframes hhModalIn{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:850px){
+  #appPage .sidebar{width:min(326px,86vw)!important;border-radius:0 23px 23px 0!important;padding-top:calc(20px + env(safe-area-inset-top))!important}
+  #appPage .sidebar .nav-button{min-height:50px!important;font-size:13.5px!important}
+  #appPage .sidebar .nav-button .icon-svg{width:22px!important;height:22px!important;flex-basis:22px!important}
+  #appPage .sidebar .nav-button.active{background:linear-gradient(110deg,#f7e6e5,#fff8f2)!important}
+  #appPage .class-modal{width:min(100%,560px)!important;max-height:84dvh!important;overflow-y:auto!important;border-radius:22px!important}
+}
+
+
+/* v77 — Calendar compact grid + real date-detail popup */
+.academic-calendar-card{max-width:900px;margin-inline:auto;background:linear-gradient(145deg,#fffdfb 0%,#fff8f6 100%);border:1px solid #eadde0;box-shadow:0 12px 34px rgba(83,25,43,.06)}
+.academic-calendar-toolbar{align-items:center;margin-bottom:22px}.academic-calendar-toolbar .outline-button{width:46px;height:46px;border-radius:15px;font-size:1.5rem;background:#fff;border-color:#e5cbd3;color:#7d263f}.academic-month-title h2{font-family:Georgia,serif;font-size:clamp(1.3rem,4vw,1.85rem);letter-spacing:-.02em}.academic-calendar-weekdays,.academic-calendar-grid{gap:clamp(3px,1vw,8px)}.academic-calendar-weekdays span{font-size:.78rem;padding:8px 0}.academic-day{min-height:clamp(48px,11vw,82px);padding:clamp(5px,1.5vw,10px) 2px;border-radius:13px;gap:5px;background:#fff;border-color:#eee2e5}.academic-day-number{font-size:clamp(.78rem,2.8vw,1rem)}.academic-day-count{font-size:clamp(.48rem,1.8vw,.68rem);line-height:1.1;color:#8b5969}.academic-day.has-events{border-color:#e7cbd4;background:linear-gradient(160deg,#fff 0%,#fff3f4 100%)}.academic-day.selected{border:2px solid #7c233d;background:#f9eaf0;box-shadow:0 4px 12px rgba(124,35,61,.12)}.academic-selected-heading,.academic-event-list{display:none!important}
+.academic-popup-backdrop{position:fixed;inset:0;z-index:99999;background:rgba(30,15,21,.48);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);display:flex;align-items:flex-end;justify-content:center;padding:18px;opacity:0;visibility:hidden;transition:opacity .22s ease,visibility .22s ease}.academic-popup-backdrop.is-open{opacity:1;visibility:visible}.academic-popup{position:relative;width:min(100%,560px);max-height:min(78vh,720px);overflow:auto;background:linear-gradient(155deg,#fffdfb 0%,#fff5f3 100%);border:1px solid rgba(255,255,255,.8);border-radius:26px 26px 20px 20px;padding:25px 22px 24px;box-shadow:0 22px 70px rgba(30,10,18,.24);transform:translateY(28px);transition:transform .25s cubic-bezier(.2,.8,.2,1)}.academic-popup-backdrop.is-open .academic-popup{transform:translateY(0)}.academic-popup-grabber{width:42px;height:4px;border-radius:8px;background:#decbd1;margin:-12px auto 20px}.academic-popup-close{position:absolute;right:16px;top:15px;width:38px;height:38px;border:0;border-radius:50%;background:#f5e5ea;color:#7b233d;font-size:1.5rem;line-height:1;cursor:pointer}.academic-popup-eyebrow{margin:0 45px 7px 0;color:#9b6575;font-size:.68rem;font-weight:800;letter-spacing:.12em}.academic-popup h2{margin:0 44px 20px 0;color:#292333;font-family:Georgia,serif;font-size:1.45rem;line-height:1.2}.academic-popup-events{display:grid;gap:11px}.academic-popup .academic-event-item{grid-template-columns:minmax(0,1fr) auto;padding:15px;border-radius:16px;background:#fff;border-color:#efdee3;gap:8px 12px}.academic-popup .academic-event-date{grid-column:1/-1;font-size:.78rem;color:#9b6575}.academic-popup .academic-event-copy h3{font-size:1rem;line-height:1.35}.academic-popup .academic-event-copy p{font-size:.88rem;line-height:1.5;color:#776d75}.academic-popup-empty{text-align:center;padding:24px 12px 30px}.academic-popup-empty-icon{display:grid;place-items:center;width:54px;height:54px;margin:0 auto 12px;border-radius:18px;background:#f7e8ed;color:#842a45;font-size:1.5rem}.academic-popup-empty h3{margin:0 0 6px;color:#302936}.academic-popup-empty p{margin:0;color:#817780;font-size:.9rem}.academic-popup-open{overflow:hidden}
+@media(min-width:700px){.academic-popup-backdrop{align-items:center}.academic-popup{border-radius:24px;padding:30px;transform:translateY(12px) scale(.98)}.academic-popup-backdrop.is-open .academic-popup{transform:translateY(0) scale(1)}}
+@media(max-width:420px){.academic-calendar-card{padding:13px 11px}.academic-day{min-height:48px;border-radius:10px}.academic-calendar-weekdays span{font-size:.7rem}.academic-popup-backdrop{padding:10px}.academic-popup{padding:23px 17px 20px;border-radius:23px 23px 16px 16px}}
+
+/* HORIZON HUB v78 — Signature Maroon / Ivory / Gold theme.
+   Strong, flat brand colors; gradients intentionally removed from core UI. */
+:root{
+  --maroon:#800020;
+  --maroon-dark:#4A1022;
+  --navy:#29232A;
+  --cream:#F5EFE8;
+  --pink:#F2E6E8;
+  --line:#E7D9D5;
+  --muted:#746B70;
+  --green:#39734B;
+  --gold:#C5A36A;
+}
+html,body{background:#F5EFE8!important;color:#29232A}
+#appPage{background:#F5EFE8!important;color:#29232A}
+#appPage .app-header{background:#FFFCF9!important;border-bottom:1px solid #E7D9D5!important;box-shadow:0 3px 14px rgba(45,15,27,.07)!important;backdrop-filter:none!important}
+#appPage .brand-small b{color:#4A1022!important}
+#appPage .brand-small b span{color:#800020!important}
+#appPage .global-search{background:#fff!important;border-color:#E3D5D1!important;box-shadow:none!important}
+#appPage .global-search:focus-within{border-color:#800020!important;box-shadow:0 0 0 3px rgba(128,0,32,.10)!important}
+
+#appPage .sidebar{background:#800020!important;background-image:none!important;box-shadow:10px 0 28px rgba(45,10,22,.14)!important}
+#appPage .sidebar .nav-button{border-radius:12px!important;transition:background .18s ease,color .18s ease!important}
+#appPage .sidebar .nav-button.active{background:#F5EFE8!important;background-image:none!important;color:#800020!important;box-shadow:inset 4px 0 0 #C5A36A!important}
+#appPage .sidebar .nav-button:hover{background:#9A1738!important;transform:none!important}
+#appPage .sidebar .nav-button.active:hover{background:#F5EFE8!important}
+#appPage .sidebar .sidebar-motto{background:#6A001B!important;background-image:none!important;border:1px solid rgba(255,255,255,.2)!important}
+#appPage .home-campus-banner{background-image:linear-gradient(90deg,rgba(50,5,20,.82),rgba(80,0,28,.35)),url("assets/kampus.jpg")!important}
+#appPage .dashboard-welcome .eyebrow,#appPage .dashboard-section-heading .eyebrow{color:#800020!important}
+#appPage .dashboard-welcome h1,#appPage .dashboard-section-heading h2{color:#29232A!important}
+#appPage .dashboard-welcome h1 em,#appPage .dashboard-section-heading h2 em,#appPage .page-heading h1 em{color:#800020!important}
+#appPage .overview-strip,#appPage .dashboard-section,#appPage .content-card{background:#FFFEFC!important;border:1px solid #E7D9D5!important;box-shadow:0 5px 18px rgba(45,15,27,.055)!important;backdrop-filter:none!important}
+#appPage .overview-icon,#appPage .overview-item b,#appPage .text-button,#appPage .today-class-time{color:#800020!important}
+#appPage .overview-item:hover{background:#F8F1EC!important}
+#appPage .progress-track{background:#E9DFDA!important}
+#appPage .progress-track span{background:#800020!important}
+#appPage .today-class-dot{background:#800020!important}
+#appPage .primary-button{background:#800020!important;background-image:none!important;color:#fff!important;box-shadow:0 4px 11px rgba(128,0,32,.18)!important;border:1px solid #800020!important}
+#appPage .primary-button:hover{background:#4A1022!important}
+#appPage .outline-button{border:1px solid #800020!important;color:#800020!important;background:#fff!important}
+#appPage .tag,#appPage .home-task-date,#appPage .explore-icon{background:#F2E6E8!important;color:#800020!important}
+#appPage .explore-link-grid button{background:#FFFEFC!important;background-image:none!important;border:1px solid #E7D9D5!important;box-shadow:0 3px 10px rgba(45,15,27,.04)!important}
+#appPage #adminDashboard .admin-welcome,#appPage #adminDashboard .admin-welcome.content-card{background:#800020!important;background-image:none!important;border:0!important;box-shadow:0 10px 25px rgba(128,0,32,.16)!important}
+#appPage #adminDashboard .admin-stat-card{background:#FFFEFC!important;border:1px solid #E7D9D5!important;box-shadow:0 5px 16px rgba(45,15,27,.05)!important}
+#appPage .modal-overlay{background:rgba(30,12,20,.58)!important;backdrop-filter:blur(5px)!important}
+#appPage .modal-content,#appPage .calendar-event-modal,#appPage .calendar-modal{background:#FFFEFC!important;border:1px solid #E7D9D5!important;box-shadow:0 22px 70px rgba(30,8,18,.28)!important}
+#appPage .modal-close{background:#F2E6E8!important;color:#800020!important}
+#appPage .modal-title-row h2{color:#4A1022!important}
+#appPage .calendar-day.selected,#appPage .calendar-day.active{background:#800020!important;color:#fff!important;border-color:#800020!important}
+#appPage .calendar-day.has-event::after{background:#800020!important}
+#appPage .calendar-event-card{border-color:#E7D9D5!important;background:#fff!important}
+#appPage .calendar-event-card h3,#appPage .calendar-event-card strong{color:#800020!important}
+@media(max-width:850px){
+ #appPage .sidebar{background:#800020!important;background-image:none!important}
+ #appPage .sidebar .nav-button.active{background:#F5EFE8!important;color:#800020!important}
+}
+
+
+/* HORIZON HUB v79 — stronger Maroon identity + genuinely centered calendar modal */
+:root{
+  --maroon:#800020 !important;
+  --maroon-dark:#4A1022 !important;
+  --navy:#29232A !important;
+  --cream:#F5EFE8 !important;
+  --pink:#F2E6E8 !important;
+  --line:#E2D4D0 !important;
+  --muted:#70666B !important;
+  --gold:#C5A36A !important;
+}
+html,body{background:#F5EFE8!important;color:#29232A!important}
+#appPage,#appPage .main-content{background:#F5EFE8!important}
+#appPage .app-header{background:#FFFCF9!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border-bottom:1px solid #E2D4D0!important;box-shadow:0 2px 10px rgba(40,12,24,.06)!important}
+#appPage .sidebar{background:#800020!important;background-image:none!important}
+#appPage .sidebar .nav-button.active{background:#F5EFE8!important;color:#800020!important;box-shadow:inset 4px 0 0 #C5A36A!important}
+#appPage .sidebar .sidebar-motto{background:#4A1022!important;background-image:none!important;border:1px solid rgba(255,255,255,.18)!important}
+
+/* Homepage: clear hierarchy, strong campus hero, no washed-out gradient canvas */
+#appPage .student-dashboard{gap:20px!important}
+#appPage .home-campus-banner{
+  min-height:210px!important;border-radius:20px!important;overflow:hidden!important;
+  background-color:transparent!important;
+  background-image:linear-gradient(90deg,rgba(24,20,23,.30),rgba(24,20,23,.12) 58%,rgba(24,20,23,.04)),url("assets/kampus.jpg")!important;
+  background-size:cover!important;background-position:center 48%!important;
+  background-blend-mode:normal!important;box-shadow:0 10px 24px rgba(74,16,34,.12)!important;
+  border:1px solid rgba(74,16,34,.14)!important
+}
+#appPage .home-campus-caption{left:26px!important;bottom:23px!important;max-width:88%!important}
+#appPage .home-campus-caption span{display:inline-block!important;color:#F5EFE8!important;background:#800020!important;padding:6px 9px!important;border-radius:4px!important;font-size:9px!important;letter-spacing:1.5px!important}
+#appPage .home-campus-caption b{display:block!important;color:#fff!important;font-size:clamp(21px,4vw,30px)!important;line-height:1.18!important;text-shadow:0 2px 8px rgba(0,0,0,.48)!important}
+#appPage .dashboard-welcome{padding:5px 2px 8px!important;background:transparent!important}
+#appPage .dashboard-welcome .eyebrow{color:#800020!important;font-weight:800!important;letter-spacing:1.5px!important}
+#appPage .dashboard-welcome h1{color:#29232A!important;line-height:1.08!important}
+#appPage .dashboard-welcome h1 em{color:#800020!important}
+#appPage .dashboard-welcome p{color:#62585E!important;max-width:620px!important;line-height:1.55!important}
+#appPage .overview-strip{background:#FFFCF9!important;background-image:none!important;border:1px solid #E2D4D0!important;border-radius:17px!important;box-shadow:0 5px 16px rgba(40,12,24,.045)!important;backdrop-filter:none!important}
+#appPage .overview-item{background:transparent!important;border-color:#E2D4D0!important}
+#appPage .overview-icon,#appPage .overview-item b{color:#800020!important}
+#appPage .dashboard-section{background:#FFFCF9!important;background-image:none!important;border:1px solid #E2D4D0!important;box-shadow:0 5px 16px rgba(40,12,24,.045)!important;backdrop-filter:none!important}
+#appPage .dashboard-section-heading{border-color:#E2D4D0!important}
+#appPage .primary-button{background:#800020!important;background-image:none!important;box-shadow:0 4px 10px rgba(128,0,32,.16)!important}
+#appPage .primary-button:hover{background:#4A1022!important;filter:none!important}
+#appPage .tag,#appPage .home-task-date{background:#F2E6E8!important;color:#800020!important}
+
+#appPage .explore-link-grid button{background:#FFFCF9!important;background-image:none!important;border:1px solid #E2D4D0!important;box-shadow:none!important}
+#appPage .content-card{background:#FFFCF9!important;background-image:none!important;border-color:#E2D4D0!important;box-shadow:0 4px 14px rgba(40,12,24,.04)!important}
+
+/* Calendar popup: center on every viewport, including mobile Safari */
+.academic-popup-backdrop{
+  position:fixed!important;inset:0!important;z-index:100000!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  padding:20px!important;padding-top:max(20px,env(safe-area-inset-top))!important;
+  padding-bottom:max(20px,env(safe-area-inset-bottom))!important;
+  background:rgba(28,13,20,.58)!important;
+  backdrop-filter:blur(5px)!important;-webkit-backdrop-filter:blur(5px)!important;
+  opacity:0!important;visibility:hidden!important
+}
+.academic-popup-backdrop.is-open{opacity:1!important;visibility:visible!important}
+.academic-popup{
+  position:relative!important;width:min( min(520px, calc(100vw - 40px)), 520px)!important;
+  max-width:520px!important;max-height:min(78dvh,680px)!important;
+  margin:auto!important;overflow-y:auto!important;overscroll-behavior:contain!important;
+  background:#FFFCF9!important;background-image:none!important;
+  border:1px solid #E2D4D0!important;border-radius:22px!important;
+  padding:30px 24px 24px!important;
+  box-shadow:0 24px 70px rgba(24,5,13,.32)!important;
+  transform:translateY(10px) scale(.97)!important;
+  transition:transform .22s ease!important
+}
+.academic-popup-backdrop.is-open .academic-popup{transform:translateY(0) scale(1)!important}
+.academic-popup-grabber{display:none!important}
+.academic-popup-eyebrow{color:#800020!important}
+.academic-popup h2{color:#29232A!important}
+.academic-popup-close{background:#F2E6E8!important;color:#800020!important}
+.academic-popup .academic-event-item{background:#FFFFFF!important;background-image:none!important;border:1px solid #E2D4D0!important;border-left:4px solid #800020!important;border-radius:13px!important}
+.academic-popup .academic-event-date{color:#800020!important;font-weight:700!important}
+.academic-popup .academic-event-copy h3{color:#29232A!important}
+.academic-popup .academic-event-copy p{color:#62585E!important}
+.academic-popup-empty-icon{background:#F2E6E8!important;color:#800020!important}
+@media(max-width:600px){
+  #appPage .main-content{background:#F5EFE8!important;padding:15px 13px 28px!important}
+  #appPage .home-campus-banner{min-height:155px!important;border-radius:16px!important}
+  #appPage .home-campus-caption{left:15px!important;bottom:14px!important}
+  #appPage .home-campus-caption b{font-size:20px!important}
+  #appPage .overview-strip{border-radius:15px!important}
+  #appPage .dashboard-section{border-radius:16px!important}
+  .academic-popup-backdrop{padding:18px!important;padding-top:max(18px,env(safe-area-inset-top))!important;padding-bottom:max(18px,env(safe-area-inset-bottom))!important}
+  .academic-popup{width:calc(100vw - 36px)!important;max-width:460px!important;max-height:76dvh!important;padding:26px 18px 20px!important;border-radius:20px!important}
+}
+
+/* V80 — Unified student calendar navigation */
+.calendar-view-switch{display:flex;gap:8px;padding:7px;margin:0 0 18px;background:#F1E7E0;border:1px solid #E4D4CB;border-radius:16px;max-width:560px}
+.calendar-view-tab{flex:1;display:flex;align-items:center;justify-content:center;gap:9px;min-height:44px;padding:10px 13px;border:1px solid transparent;border-radius:11px;background:transparent;color:#542334;font:600 .9rem/1.2 inherit;cursor:pointer;transition:background .18s ease,color .18s ease,box-shadow .18s ease}
+.calendar-view-tab svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.calendar-view-tab.active{background:#800020;color:#fff;box-shadow:0 4px 12px rgba(82,14,35,.16)}
+.calendar-view-tab:not(.active):hover{background:#fff;color:#800020}
+.nav-button[data-tab="calendarHub"]{position:relative}
+.nav-button[data-tab="calendarHub"] .nav-chevron{margin-left:auto;font-size:1.05rem;opacity:.72}
+@media(max-width:520px){.calendar-view-switch{width:100%;gap:5px;padding:5px;border-radius:13px}.calendar-view-tab{font-size:.78rem;padding:9px 6px;gap:6px;min-height:42px}.calendar-view-tab svg{width:17px;height:17px}}
+/* Center modal consistently on phone and desktop */
+.academic-popup-backdrop{align-items:center!important;justify-content:center!important}
+.academic-popup{margin:auto!important;transform:translateY(10px) scale(.98)!important;border-radius:22px!important}
+
+
+
+
+/* V81 — Natural campus photo: remove maroon multiply tint */
+#appPage .home-campus-banner{background-blend-mode:normal!important}
+#appPage .home-campus-caption{ text-shadow:0 2px 8px rgba(0,0,0,.42)!important}
+
+/* V83 — Compact academic homepage with campus line-art illustration */
+#appPage .student-dashboard{gap:16px!important}
+#appPage .dashboard-welcome{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:14px!important;min-height:150px!important;padding:5px 8px 8px!important;position:relative!important;overflow:hidden!important}
+#appPage .dashboard-welcome-copy{position:relative!important;z-index:2!important;flex:1 1 58%!important;min-width:0!important}
+#appPage .dashboard-welcome .eyebrow{font-size:10px!important;letter-spacing:1.6px!important;margin-bottom:9px!important}
+#appPage .dashboard-welcome h1{font-size:clamp(28px,3vw,40px)!important;line-height:1.08!important;max-width:700px!important}
+#appPage .dashboard-welcome-copy>p:last-child{font-size:14px!important;max-width:540px!important;line-height:1.48!important;margin-top:8px!important}
+#appPage .campus-lineart{display:block!important;flex:0 1 34%!important;width:34%!important;max-width:360px!important;height:145px!important;object-fit:contain!important;object-position:center bottom!important;align-self:flex-end!important;opacity:.92!important;pointer-events:none!important}
+#appPage .overview-strip{margin-bottom:0!important}
+#appPage .home-quick-links{margin:0!important;padding:0 2px!important}
+#appPage .home-quick-heading{display:flex!important;align-items:baseline!important;justify-content:space-between!important;margin:0 2px 9px!important}
+#appPage .home-quick-heading h2{margin:0!important;color:#800020!important;font:700 21px/1.2 Arial,sans-serif!important}
+#appPage .home-quick-heading span{color:#81747A!important;font-size:11px!important}
+#appPage .home-quick-grid{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:10px!important}
+#appPage .home-quick-grid button{min-width:0!important;min-height:106px!important;padding:12px 8px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:5px!important;border:1px solid #E5D7D2!important;border-radius:16px!important;background:#FFFCF9!important;color:#29232A!important;box-shadow:0 4px 12px rgba(40,12,24,.045)!important;text-align:center!important}
+#appPage .home-quick-grid button:first-child{background:#F8ECEE!important;border-color:#E6C9D0!important}
+#appPage .quick-link-icon{font-size:27px!important;line-height:1.1!important;color:#800020!important;font-weight:700!important}
+#appPage .home-quick-grid b{font-size:12px!important;line-height:1.2!important}
+#appPage .home-quick-grid small{font-size:10px!important;color:#796D73!important;line-height:1.2!important}
+#appPage .dashboard-grid{gap:14px!important}
+#appPage .dashboard-section{padding:18px!important}
+@media(max-width:700px){
+ #appPage .dashboard-welcome{min-height:124px!important;gap:4px!important;padding:3px 2px 5px!important}
+ #appPage .dashboard-welcome-copy{flex-basis:62%!important}
+ #appPage .dashboard-welcome .eyebrow{font-size:8px!important;letter-spacing:1px!important;margin-bottom:6px!important}
+ #appPage .dashboard-welcome h1{font-size:clamp(23px,6.6vw,30px)!important;line-height:1.08!important}
+ #appPage .dashboard-welcome-copy>p:last-child{font-size:11px!important;line-height:1.4!important;margin-top:6px!important}
+ #appPage .campus-lineart{flex-basis:38%!important;width:38%!important;height:112px!important;margin-left:-8px!important;opacity:.88!important}
+ #appPage .home-quick-heading h2{font-size:18px!important}
+ #appPage .home-quick-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+ #appPage .home-quick-grid button{min-height:86px!important;padding:9px 6px!important;border-radius:13px!important}
+ #appPage .quick-link-icon{font-size:23px!important}
+ #appPage .home-quick-grid b{font-size:11px!important}
+ #appPage .home-quick-grid small{font-size:9px!important}
+}
+@media(max-width:360px){#appPage .campus-lineart{width:34%!important;flex-basis:34%!important;height:98px!important}#appPage .dashboard-welcome h1{font-size:22px!important}}
+#appPage .quick-link-icon svg{display:block;width:27px;height:27px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:700px){#appPage .quick-link-icon svg{width:23px;height:23px}}
+
+
+/* v84 — Profile photo crop + uncropped desktop campus hero */
+#appPage .profile-avatar,#appPage .profile-hero .profile-avatar,#appPage .mini-avatar,#appPage .dropdown-avatar,#appPage .sidebar-profile-avatar,#appPage .settings-avatar{border:0!important;outline:0!important;box-shadow:none!important;border-radius:50%!important;overflow:hidden!important;background:transparent!important;padding:0!important}
+#appPage .profile-avatar img,#appPage .mini-avatar img,#appPage .dropdown-avatar img,#appPage .sidebar-profile-avatar img,#appPage .settings-avatar img{display:block;width:100%!important;height:100%!important;border:0!important;outline:0!important;box-shadow:none!important;border-radius:50%!important;object-fit:cover!important}
+#appPage .profile-hero .profile-avatar{border:0!important;box-shadow:none!important}
+#appPage .home-campus-banner{background-color:#e9ded7!important;background-image:linear-gradient(90deg,rgba(55,12,29,.68) 0%,rgba(65,18,35,.26) 43%,rgba(30,20,25,.02) 72%),url("assets/kampus.jpg")!important;background-repeat:no-repeat!important;background-size:cover!important;background-position:center 39%!important;min-height:clamp(220px,22vw,310px)!important;aspect-ratio:5.1/1!important;overflow:hidden!important}
+#appPage .home-campus-caption{max-width:48%;}
+@media(max-width:680px){#appPage .home-campus-banner{aspect-ratio:auto!important;min-height:150px!important;background-position:center 38%!important;background-size:cover!important}#appPage .home-campus-caption{max-width:78%}}
+.photo-crop-backdrop{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(28,12,20,.62);backdrop-filter:blur(7px)}
+.photo-crop-backdrop.hidden{display:none!important}.photo-crop-dialog{position:relative;width:min(440px,100%);max-height:min(92vh,760px);overflow:auto;background:#fffaf7;border:1px solid #ead8dc;border-radius:24px;padding:26px;box-shadow:0 24px 70px rgba(20,5,12,.28)}
+.photo-crop-dialog h2{margin:2px 0 7px;color:#351b2a;font:700 25px Georgia,serif}.photo-crop-help{font-size:13px;line-height:1.5;color:#776a70;margin:0 0 18px}.photo-crop-close{position:absolute;right:16px;top:14px;border:0;background:#f5e6e9;color:#85132f;border-radius:50%;width:36px;height:36px;font-size:24px}.photo-crop-stage{width:min(260px,72vw);height:min(260px,72vw);margin:0 auto 20px;border-radius:50%;overflow:hidden;background:#eee3e2;border:0;box-shadow:none}.photo-crop-stage img{width:100%;height:100%;display:block;object-fit:cover;object-position:50% 50%;transform:scale(1);transform-origin:center}.crop-control{display:grid;grid-template-columns:145px 1fr;align-items:center;gap:12px;margin:13px 0;color:#523b44;font-size:12px;font-weight:700}.crop-control input{width:100%;accent-color:#8a1230}.photo-crop-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}.photo-crop-actions button{min-width:110px;min-height:44px}
+
+
+/* v85 — WhatsApp-style draggable/pinch profile crop + academic campus banner */
+#appPage .home-campus-banner{
+  position:relative!important;isolation:isolate!important;
+  min-height:clamp(190px,20vw,285px)!important;aspect-ratio:5.05/1!important;
+  background-color:#4a1022!important;
+  background-image:linear-gradient(90deg,#790022 0%,rgba(121,0,34,.97) 23%,rgba(121,0,34,.82) 39%,rgba(121,0,34,.38) 57%,rgba(121,0,34,.02) 76%),url("assets/kampus.jpg")!important;
+  background-size:cover!important;background-position:center 42%!important;background-repeat:no-repeat!important;
+  border:0!important;border-radius:20px!important;overflow:hidden!important;
+}
+#appPage .home-campus-banner::before{content:"";position:absolute;z-index:0;left:-5%;top:-46%;width:36%;height:190%;border:7px solid rgba(207,169,99,.94);border-right:0;border-bottom:0;border-radius:0 0 0 100%;transform:rotate(-8deg);pointer-events:none}
+#appPage .home-campus-banner::after{content:"";position:absolute;z-index:0;left:-3%;top:-40%;width:43%;height:185%;border:2px solid rgba(236,202,139,.78);border-right:0;border-bottom:0;border-radius:0 0 0 100%;transform:rotate(-8deg);pointer-events:none}
+#appPage .home-campus-caption{z-index:1!important;left:clamp(22px,3vw,42px)!important;top:50%!important;bottom:auto!important;transform:translateY(-50%)!important;max-width:47%!important;display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:12px!important}
+#appPage .home-campus-caption span{display:block!important;background:transparent!important;padding:0!important;border-radius:0!important;color:#fff7ee!important;font-size:clamp(10px,1vw,14px)!important;letter-spacing:1.5px!important;font-weight:600!important}
+#appPage .home-campus-caption b{display:block!important;color:#fff!important;font-family:Georgia,serif!important;font-style:italic!important;font-size:clamp(22px,2.55vw,38px)!important;line-height:1.12!important;text-shadow:0 2px 12px rgba(20,0,8,.22)!important}
+#appPage .photo-crop-stage{touch-action:none!important;cursor:grab!important;user-select:none!important;-webkit-user-select:none!important;overflow:hidden!important;border-radius:50%!important;background:#eee4e1!important}
+#appPage .photo-crop-stage:active{cursor:grabbing!important}
+#appPage .photo-crop-stage img{pointer-events:none!important;will-change:transform!important;transform-origin:center center!important;max-width:none!important}
+@media(max-width:680px){
+ #appPage .home-campus-banner{min-height:150px!important;aspect-ratio:2.25/1!important;background-position:58% center!important;background-image:linear-gradient(90deg,#790022 0%,rgba(121,0,34,.94) 30%,rgba(121,0,34,.58) 58%,rgba(121,0,34,.08) 100%),url("assets/kampus.jpg")!important;border-radius:15px!important}
+ #appPage .home-campus-caption{left:16px!important;max-width:62%!important;gap:7px!important}
+ #appPage .home-campus-caption span{font-size:8px!important;letter-spacing:1px!important}
+ #appPage .home-campus-caption b{font-size:clamp(17px,5vw,23px)!important;line-height:1.13!important}
+}
+
+
+/* v86 — Homepage refinement: stronger academic banner, natural campus photo, improved building framing */
+#appPage .home-campus-banner{
+  min-height:clamp(220px,21vw,290px)!important;
+  aspect-ratio:4.75/1!important;
+  background-color:#76001f!important;
+  background-image:
+    linear-gradient(90deg,
+      #76001f 0%,
+      rgba(118,0,31,.99) 19%,
+      rgba(118,0,31,.91) 32%,
+      rgba(118,0,31,.70) 43%,
+      rgba(118,0,31,.30) 57%,
+      rgba(118,0,31,.04) 73%,
+      rgba(118,0,31,0) 100%),
+    url("assets/kampus.jpg")!important;
+  background-size:cover!important;
+  background-position:56% 43%!important;
+  background-repeat:no-repeat!important;
+  border:1px solid rgba(118,0,31,.12)!important;
+  border-radius:22px!important;
+  box-shadow:0 12px 28px rgba(61,12,29,.12)!important;
+}
+#appPage .home-campus-banner::before{
+  left:-7%!important;top:-48%!important;width:34%!important;height:195%!important;
+  border-width:8px!important;border-color:rgba(211,174,105,.96)!important;
+}
+#appPage .home-campus-banner::after{
+  left:-4%!important;top:-42%!important;width:40%!important;height:190%!important;
+  border-width:2px!important;border-color:rgba(245,220,169,.9)!important;
+}
+#appPage .home-campus-caption{
+  left:clamp(24px,3.2vw,48px)!important;
+  max-width:45%!important;
+  gap:13px!important;
+}
+#appPage .home-campus-caption span{
+  color:#fff8ee!important;font-size:clamp(10px,.95vw,13px)!important;
+  letter-spacing:1.8px!important;font-weight:700!important;
+}
+#appPage .home-campus-caption b{
+  color:#fffdf9!important;font-size:clamp(25px,2.7vw,40px)!important;
+  line-height:1.08!important;max-width:620px!important;
+  text-shadow:0 2px 12px rgba(35,0,12,.2)!important;
+}
+#appPage .student-dashboard{gap:17px!important}
+#appPage .dashboard-welcome{min-height:132px!important}
+#appPage .campus-lineart{max-width:min(34%,390px)!important;max-height:145px!important;object-fit:contain!important}
+#appPage .overview-strip{border-radius:18px!important}
+#appPage .dashboard-section,#appPage .quick-link-card{border-radius:18px!important}
+@media(max-width:1000px){
+  #appPage .home-campus-banner{min-height:clamp(190px,24vw,240px)!important;aspect-ratio:4.2/1!important;background-position:56% 43%!important}
+  #appPage .home-campus-caption{max-width:48%!important}
+  #appPage .home-campus-caption b{font-size:clamp(23px,3.4vw,32px)!important}
+}
+@media(max-width:680px){
+  #appPage .home-campus-banner{
+    min-height:154px!important;aspect-ratio:2.12/1!important;
+    background-image:linear-gradient(90deg,#76001f 0%,rgba(118,0,31,.97) 24%,rgba(118,0,31,.80) 43%,rgba(118,0,31,.36) 64%,rgba(118,0,31,.06) 100%),url("assets/kampus.jpg")!important;
+    background-position:58% 43%!important;border-radius:16px!important;
+    box-shadow:0 8px 18px rgba(61,12,29,.10)!important;
+  }
+  #appPage .home-campus-banner::before{left:-11%!important;width:42%!important;border-width:5px!important}
+  #appPage .home-campus-banner::after{left:-8%!important;width:48%!important}
+  #appPage .home-campus-caption{left:17px!important;max-width:61%!important;gap:8px!important}
+  #appPage .home-campus-caption span{font-size:8px!important;letter-spacing:1.15px!important}
+  #appPage .home-campus-caption b{font-size:clamp(18px,5.1vw,24px)!important;line-height:1.12!important}
+  #appPage .dashboard-welcome{min-height:unset!important;gap:8px!important}
+  #appPage .campus-lineart{max-width:31%!important;max-height:90px!important}
+}
+
+
+/* v87 — Elegant Academic homepage: full-height campus photo, confident maroon and warm ivory */
+#appPage .student-dashboard{gap:22px!important}
+#appPage .home-campus-banner{
+  position:relative!important;isolation:isolate!important;display:flex!important;align-items:center!important;
+  min-height:clamp(205px,22vw,270px)!important;aspect-ratio:4.65/1!important;
+  padding:clamp(22px,3vw,42px)!important;box-sizing:border-box!important;overflow:hidden!important;
+  border:1px solid rgba(111,0,31,.14)!important;border-radius:22px!important;
+  background:linear-gradient(105deg,#76001f 0%,#850027 43%,#6d102b 57%,#f3e9e1 100%)!important;
+  box-shadow:0 12px 28px rgba(61,12,29,.12)!important;
+}
+#appPage .home-campus-photo{position:absolute!important;z-index:-1!important;right:0!important;top:0!important;height:100%!important;width:57%!important;display:flex!important;align-items:center!important;justify-content:flex-end!important;overflow:hidden!important}
+#appPage .home-campus-photo:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,#76001f 0%,rgba(118,0,31,.72) 13%,rgba(118,0,31,.12) 48%,rgba(25,12,20,.04) 100%)}
+#appPage .home-campus-photo img{height:100%!important;width:auto!important;max-width:none!important;object-fit:contain!important;object-position:right center!important;display:block!important}
+#appPage .home-campus-banner:before,#appPage .home-campus-banner:after{z-index:2!important;pointer-events:none!important}
+#appPage .home-campus-banner:before{left:-8%!important;top:-54%!important;width:31%!important;height:200%!important;border:6px solid rgba(221,184,111,.95)!important;border-right:0!important;border-bottom:0!important;border-radius:0 0 0 100%!important;transform:rotate(-8deg)!important}
+#appPage .home-campus-banner:after{left:-5%!important;top:-47%!important;width:37%!important;height:195%!important;border:2px solid rgba(248,224,176,.85)!important;border-right:0!important;border-bottom:0!important;border-radius:0 0 0 100%!important;transform:rotate(-8deg)!important}
+#appPage .home-campus-caption{position:relative!important;z-index:3!important;left:auto!important;top:auto!important;bottom:auto!important;transform:none!important;display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:12px!important;width:52%!important;max-width:560px!important}
+#appPage .home-campus-caption span{color:#fff8ee!important;font-size:clamp(10px,.95vw,13px)!important;letter-spacing:1.8px!important;font-weight:700!important;padding:0!important;background:none!important}
+#appPage .home-campus-caption b{color:#fffdf9!important;font-family:Georgia,serif!important;font-style:italic!important;font-size:clamp(25px,2.8vw,40px)!important;line-height:1.08!important;text-shadow:0 2px 12px rgba(35,0,12,.2)!important}
+#appPage .home-campus-caption i{display:block!important;width:112px!important;height:7px!important;border-radius:99px!important;background:linear-gradient(90deg,#f3d17d,#d5a74d)!important;margin-top:2px!important}
+#appPage .dashboard-welcome{min-height:118px!important;gap:18px!important;padding:4px 7px 7px!important}
+#appPage .dashboard-welcome h1{line-height:1.08!important;letter-spacing:-.6px!important}
+#appPage .campus-lineart{width:min(31%,360px)!important;max-width:360px!important;max-height:132px!important;object-fit:contain!important;opacity:.94!important}
+#appPage .overview-strip{border:1px solid #e5d7d2!important;background:#fffdfa!important;box-shadow:0 7px 20px rgba(52,22,31,.055)!important;border-radius:19px!important}
+#appPage .home-quick-heading h2{color:#790022!important}
+#appPage .home-quick-grid button{background:#fffdfa!important;border:1px solid #e6d8d3!important;box-shadow:0 5px 15px rgba(52,22,31,.055)!important}
+#appPage .home-quick-grid button:first-child{background:#f8ecee!important;border-color:#e3c4cd!important}
+@media(max-width:680px){
+ #appPage .student-dashboard{gap:17px!important}
+ #appPage .home-campus-banner{min-height:170px!important;aspect-ratio:2.08/1!important;padding:17px!important;border-radius:17px!important;background:linear-gradient(105deg,#76001f 0%,#850027 48%,#6d102b 65%,#f3e9e1 100%)!important}
+ #appPage .home-campus-photo{width:58%!important}
+ #appPage .home-campus-photo img{height:100%!important;width:auto!important;max-width:none!important;object-fit:contain!important;object-position:right center!important}
+ #appPage .home-campus-photo:before{background:linear-gradient(90deg,#76001f 0%,rgba(118,0,31,.72) 18%,rgba(118,0,31,.12) 70%,rgba(25,12,20,.02) 100%)!important}
+ #appPage .home-campus-caption{width:59%!important;max-width:59%!important;gap:8px!important}
+ #appPage .home-campus-caption span{font-size:8px!important;letter-spacing:1.05px!important;line-height:1.35!important}
+ #appPage .home-campus-caption b{font-size:clamp(18px,5.1vw,24px)!important;line-height:1.12!important}
+ #appPage .home-campus-caption i{width:66px!important;height:5px!important}
+ #appPage .home-campus-banner:before{left:-13%!important;width:42%!important;border-width:5px!important}
+ #appPage .home-campus-banner:after{left:-9%!important;width:47%!important}
+ #appPage .dashboard-welcome{min-height:unset!important;gap:8px!important;padding:2px 2px 5px!important}
+ #appPage .campus-lineart{width:31%!important;max-height:92px!important}
+}
+@media(max-width:370px){#appPage .home-campus-banner{min-height:158px!important}#appPage .home-campus-caption b{font-size:18px!important}}
+
+
+/* v88 — Illustrated Horizon campus hero banner (single composed artwork) */
+#appPage .home-campus-banner{
+  position:relative!important;display:block!important;isolation:isolate!important;
+  width:100%!important;height:auto!important;min-height:0!important;aspect-ratio:3/1!important;
+  padding:0!important;overflow:hidden!important;box-sizing:border-box!important;
+  border:1px solid rgba(118,0,31,.16)!important;border-radius:22px!important;
+  background:#76001f!important;box-shadow:0 12px 28px rgba(61,12,29,.13)!important;
+}
+#appPage .home-campus-banner-art{
+  display:block!important;width:100%!important;height:100%!important;
+  position:absolute!important;inset:0!important;max-width:none!important;
+  object-fit:cover!important;object-position:center center!important;
+}
+#appPage .home-campus-photo,#appPage .home-campus-caption{display:none!important}
+#appPage .home-campus-banner:before,#appPage .home-campus-banner:after{display:none!important}
+@media(max-width:680px){
+  #appPage .home-campus-banner{aspect-ratio:2.55/1!important;min-height:0!important;border-radius:17px!important}
+  #appPage .home-campus-banner-art{object-fit:cover!important;object-position:center center!important}
+}
+@media(max-width:390px){#appPage .home-campus-banner{aspect-ratio:2.35/1!important}}
+
+/* v89 — Mobile layout fixes: keep the complete campus artwork visible and contain planner fields */
+@media (max-width: 680px) {
+  #appPage .home-campus-banner {
+    aspect-ratio: 3 / 1 !important;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+  #appPage .home-campus-banner-art {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+  }
+}
+
+#appPage #plannerForm {
+  grid-template-columns: minmax(0, 1fr) !important;
+  width: 100% !important;
+  min-width: 0 !important;
+}
+#appPage #plannerForm > label,
+#appPage #plannerForm > label.full {
+  grid-column: 1 / -1 !important;
+  width: 100% !important;
+  min-width: 0 !important;
+}
+#appPage #plannerForm input,
+#appPage #plannerForm select,
+#appPage #plannerForm textarea {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+#appPage #plannerForm .primary-button {
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+
+
+/* v91 — student photo carousel: responsive, centered and smooth */
+#appPage .student-photo-carousel{
+  touch-action:pan-y;user-select:none;-webkit-user-select:none;
+  position:relative!important;display:block!important;isolation:isolate;
+  width:100%;aspect-ratio:2.45/1;min-height:0!important;height:auto!important;
+  overflow:hidden!important;border-radius:22px!important;
+  background:#4b1024!important;box-shadow:0 14px 34px rgba(66,22,39,.14)!important;
+}
+#appPage .student-photo-slides{position:absolute;inset:0;overflow:hidden}
+#appPage .student-photo-slide{
+  position:absolute;inset:0;width:100%;height:100%;display:block;
+  object-fit:cover;object-position:center 48%;
+  opacity:0;transform:scale(1.015);
+  transition:opacity .85s ease,transform 5.8s ease;
+}
+#appPage .student-photo-slide.is-active{opacity:1;transform:scale(1)}
+#appPage .student-photo-shade{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(90deg,rgba(91,0,31,.96) 0%,rgba(105,5,39,.86) 31%,rgba(105,5,39,.35) 58%,rgba(20,15,20,.04) 100%);
+}
+#appPage .student-photo-caption{
+  position:absolute;z-index:2;left:5%;top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;align-items:flex-start;max-width:52%;
+  color:#fff8f1;pointer-events:none;
+}
+#appPage .student-photo-caption span{font-size:clamp(8px,.9vw,11px);font-weight:800;letter-spacing:.19em;margin-bottom:12px}
+#appPage .student-photo-caption strong{font:italic 500 clamp(21px,3.2vw,40px)/1.08 Georgia,serif;letter-spacing:-.025em}
+#appPage .student-photo-caption i{display:block;width:72px;height:5px;border-radius:8px;background:#d8b76d;margin-top:16px}
+#appPage .student-photo-dots{position:absolute;z-index:3;right:20px;bottom:17px;display:flex;align-items:center;gap:8px}
+#appPage .student-photo-dots button{
+  appearance:none;border:0;padding:0;width:7px;height:7px;border-radius:50%;
+  background:rgba(255,255,255,.58);cursor:pointer;transition:width .25s ease,background .25s ease;
+}
+#appPage .student-photo-dots button.is-active{width:22px;border-radius:8px;background:#fff}
+@media(max-width:700px){
+  #appPage .student-photo-carousel{aspect-ratio:1.72/1;border-radius:18px!important}
+  #appPage .student-photo-slide{object-position:center center}
+  #appPage .student-photo-shade{background:linear-gradient(90deg,rgba(91,0,31,.94) 0%,rgba(105,5,39,.76) 42%,rgba(105,5,39,.2) 78%,rgba(20,15,20,.05) 100%)}
+  #appPage .student-photo-caption{left:5%;max-width:66%}
+  #appPage .student-photo-caption span{font-size:7px;letter-spacing:.13em;margin-bottom:8px}
+  #appPage .student-photo-caption strong{font-size:clamp(19px,5.6vw,27px);line-height:1.08}
+  #appPage .student-photo-caption i{width:48px;height:4px;margin-top:11px}
+  #appPage .student-photo-dots{right:12px;bottom:11px;gap:6px}
+}
+@media(prefers-reduced-motion:reduce){
+  #appPage .student-photo-slide,#appPage .student-photo-dots button{transition:none!important}
+}
+
+/* V92 — Desktop dashboard alignment: pair related cards in equal-height rows */
+@media (min-width: 900px){
+  #appPage .dashboard-grid{
+    display:grid!important;
+    grid-template-columns:minmax(0,1.08fr) minmax(320px,.92fr)!important;
+    grid-auto-flow:row!important;
+    align-items:stretch!important;
+    gap:18px!important;
+  }
+  #appPage .dashboard-main-column,
+  #appPage .dashboard-side-column{display:contents!important}
+  #appPage .dashboard-grid > .dashboard-main-column > .dashboard-section,
+  #appPage .dashboard-grid > .dashboard-side-column > .dashboard-section{
+    min-width:0!important;
+    height:100%!important;
+    align-self:stretch!important;
+  }
+  #appPage .dashboard-grid .home-planner{grid-column:1;grid-row:1;order:1}
+  #appPage .dashboard-grid .dashboard-side-column > .dashboard-section:first-child{grid-column:2;grid-row:1;order:2}
+  #appPage .dashboard-grid .dashboard-main-column > .dashboard-section:not(.home-planner){grid-column:1;grid-row:2;order:3}
+  #appPage .dashboard-grid .dashboard-side-column > .dashboard-section:last-child{grid-column:2;grid-row:2;order:4}
+  #appPage .dashboard-grid .dashboard-section{box-sizing:border-box}
+}
+@media (max-width:899px){
+  #appPage .dashboard-main-column,
+  #appPage .dashboard-side-column{display:grid!important;align-content:start!important}
+  #appPage .dashboard-grid{align-items:start!important}
+}
+
+
+/* v93 — Desktop weekly schedule: balanced cards and compact weekend strip */
+@media (min-width: 851px) {
+  #weeklySchedule.weekly-schedule {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    grid-auto-flow: row;
+    align-items: stretch !important;
+    gap: 14px !important;
+  }
+  #weeklySchedule .day-block:not(.weekend-block) {
+    min-height: 260px !important;
+    height: 100%;
+    box-sizing: border-box;
+  }
+  #weeklySchedule .day-classes {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  #weeklySchedule .day-classes:empty::after {
+    content: "Tidak ada jadwal kuliah";
+    min-height: 145px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 18px 10px;
+    color: #8a777d;
+    font-size: 13px;
+    background: linear-gradient(145deg, #fffaf8, #f8eef0);
+    border: 1px dashed #e5cfd4;
+    border-radius: 12px;
+  }
+  #weeklySchedule .weekend-block {
+    grid-column: 1 / -1 !important;
+    min-height: 0 !important;
+    height: auto !important;
+    display: grid !important;
+    grid-template-columns: minmax(180px, 0.8fr) minmax(0, 2fr) !important;
+    align-items: center !important;
+    gap: 18px !important;
+    padding: 14px 18px !important;
+    background: linear-gradient(105deg, #fffaf8, #f8eef0) !important;
+  }
+  #weeklySchedule .weekend-block .day-label {
+    border: 0 !important;
+    border-right: 1px solid #e5d5d6 !important;
+    padding: 4px 16px 4px 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+  }
+  #weeklySchedule .weekend-message {
+    min-height: 0 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    text-align: left !important;
+    gap: 12px !important;
+    padding: 0 !important;
+  }
+  #weeklySchedule .weekend-message span {
+    flex: 0 0 38px;
+    width: 38px !important;
+    height: 38px !important;
+  }
+  #weeklySchedule .weekend-message small {
+    max-width: none !important;
+    margin-left: auto;
+    text-align: right;
+  }
+}

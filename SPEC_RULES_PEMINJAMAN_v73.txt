@@ -1,0 +1,45 @@
+HORIZON HUB — SPESIFIKASI RULES KEAMANAN PEMINJAMAN
+Versi prototype: v73
+Status: FRONTEND PROTOTYPE, BELUM TERHUBUNG DATABASE/BACKEND
+
+KEBIJAKAN FINAL
+1. Persetujuan semua booking ruangan dan inventaris wajib dilakukan admin.
+2. Pembatalan mandiri untuk pengajuan pending diperbolehkan. Booking yang sudah disetujui hanya dapat dibatalkan mandiri jika masih >=24 jam sebelum waktu mulai. Pengecualian kurang dari 24 jam ditangani admin dan wajib dicatat.
+3. Inventaris hanya boleh digunakan di dalam area kampus.
+4. Pengajuan pending tidak kedaluwarsa otomatis. Admin harus memantau antrean; UI menampilkan lama menunggu sebagai pengingat.
+5. Booking bentrok dilarang, termasuk pending/approved, jadwal kuliah, kegiatan kampus, dan maintenance.
+6. Kapasitas ruangan tidak boleh dilampaui.
+7. Pengajuan inventaris pending ikut menahan stok berdasarkan irisan periode pinjam sampai pengembalian.
+8. Serah terima inventaris wajib mencatat petugas, jumlah, kondisi sebelum pinjam, kondisi saat kembali, waktu, dan catatan kerusakan/kehilangan.
+9. Semua perubahan status dicatat pada audit log. Transaksi tidak dihapus; gunakan status batal/arsip.
+10. Pada produksi, approval dan semua validasi wajib dilakukan backend/database. localStorage hanya untuk simulasi prototype dan tidak aman sebagai kontrol otorisasi.
+
+IMPLEMENTASI PROTOTYPE v73
+- Validasi kapasitas ruangan tetap aktif saat submit dan saat admin menyetujui.
+- Pemeriksaan konflik ruangan ditambah: booking lain, jadwal kuliah prototype, kegiatan kampus dari localStorage key horizonHubCampusEvents, dan maintenance dari horizonHubRoomMaintenance.
+- Pembuatan booking ruangan dicatat ke audit log.
+- Antrean pending menampilkan estimasi lama menunggu; tidak ada auto-expiry.
+- Stok pending inventory sudah ditahan oleh perhitungan reservedAssetQuantity.
+- Approval inventory tetap memeriksa ulang stok (developer wajib pertahankan).
+- Inventaris luar kampus dilarang melalui pilihan lokasi penggunaan di area kampus; backend harus menegakkan aturan ini pada fase database.
+
+DATA EVENT/MAINTENANCE PROTOTYPE
+Format horizonHubCampusEvents:
+[{ "id":"EVT-1", "resource":"LAB-MULTIMEDIA", "date":"2026-11-20", "start":"09:00", "end":"12:00", "status":"Scheduled", "title":"Kegiatan Kampus" }]
+Format horizonHubRoomMaintenance:
+[{ "id":"MNT-1", "resource":"LAB-MULTIMEDIA", "date":"2026-11-20", "start":"13:00", "end":"17:00", "status":"Scheduled", "note":"Perawatan perangkat" }]
+Nama resource harus sama persis dengan kode/nama ruangan yang dipakai booking. Jadwal kuliah dibandingkan berdasarkan hari, room, dan format time "08:00–10:00".
+
+WAJIB BACKEND SAAT DATABASE DIBANGUN
+- RBAC dan autentikasi server-side; mahasiswa tidak boleh mengubah status approval.
+- Transaction/row lock atau exclusion constraint untuk mencegah double booking bersamaan.
+- Validasi konflik jadwal kuliah, event, maintenance dan kapasitas di server.
+- Reservasi stok atomik untuk periode peminjaman; pending ikut menahan stok.
+- Endpoint approval hanya untuk role admin yang berwenang.
+- Audit log append-only; tidak ada hard delete transaksi.
+- Pencatatan handover/return: staff_id, timestamps, qty, condition_before, condition_after, notes, evidence bila kebijakan mengizinkan.
+- Notifikasi admin untuk pending baru dan pengingat antrean berdasarkan SLA yang ditentukan kampus; tidak mengubah status otomatis.
+- Validasi server-side bahwa lokasi penggunaan inventaris berada di area kampus.
+
+BATASAN PROTOTYPE
+localStorage hanya menyimpan data pada browser/perangkat yang sama. Data event/maintenance perlu dimasukkan melalui data demo/browser storage sampai UI master kegiatan dan maintenance dibangun. Pemeriksaan front-end bukan jaminan keamanan produksi.

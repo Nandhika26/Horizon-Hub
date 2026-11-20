@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#980d2b">
+  <title>Horizon Hub | Universitas Horizon Indonesia</title>
+  <link rel="stylesheet" href="style.css?v=92">
+  <link rel="stylesheet" href="custom.css?v=92">
+</head>
+<body>
+  <!-- LOGIN -->
+  <div id="loginPage">
+    <header class="landing-header">
+      <div class="university-brand"><img src="assets/logo-horizon.webp" alt="Logo Universitas Horizon"><div>UNIVERSITAS<br>HORIZON INDONESIA</div></div>
+    </header>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">UNIVERSITAS HORIZON INDONESIA</p>
+        <h1>HORIZON<br><span>HUB</span></h1>
+        <p class="hero-subtitle">YOUR CAMPUS, ALL IN ONE PLACE</p>
+        <p class="motto">#Selalu Bersamamu</p>
+        <p class="hero-description">Satu platform untuk jadwal kuliah, lokasi kelas, informasi dosen dan staff, agenda mahasiswa, serta layanan peminjaman kampus.</p>
+</div>
+    </section>
+    <section class="login-section">
+      <div class="login-card">
+        <h2>Login ke <span>Horizon Hub</span></h2>
+        <p class="muted">Masuk dengan akun Anda untuk melanjutkan.</p>
+        <form id="loginForm">
+          <label class="field"><span><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 21v-1.5a7 7 0 0 1 14 0V21z"/></svg></span><input id="username" placeholder="Masukkan username" autocomplete="username" required></label>
+          <label class="field"><span><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10" width="15" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 5v2"/></svg></span><input id="password" type="password" placeholder="Masukkan password" autocomplete="current-password" required><button type="button" id="togglePassword" class="password-toggle" aria-label="Tampilkan password" aria-pressed="false" title="Tampilkan password">
+              <svg class="eye-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12s3.4-6 9.5-6 9.5 6 9.5 6-3.4 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="12" cy="12" r="2.7"/></svg>
+            </button></label>
+          <div class="login-options">
+            <label class="remember-option"><input type="checkbox" id="rememberMe"><span>Remember me</span></label>
+          </div>
+          <button class="primary-button" type="submit">Login <span><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span></button>
+          <p id="loginMessage" class="form-message"></p>
+        </form>
+        <div class="auth-links">
+          <button type="button" id="showRegister" class="auth-link">Daftar akun</button>
+          <button type="button" id="showForgot" class="auth-link">Lupa password?</button>
+        </div>
+        <div class="demo-box" id="demoAccounts">
+          <b>Informasi Akun Demo</b>
+          <div class="demo-account-grid">
+            <div><strong>Mahasiswa</strong><p>Username: <code>mahasiswa</code><br>Password: <code>mhs123</code></p></div>
+            <div><strong>Admin</strong><p>Username: <code>admin</code><br>Password: <code>admin123</code></p></div>
+          </div>
+        </div>
+        <form id="registerForm" class="auth-extra hidden">
+          <div class="auth-extra-heading"><h3>Buat Akun Mahasiswa</h3><p>Isi data sesuai identitas akademik.</p></div>
+          <label class="auth-label">Nama lengkap<input id="regName" required placeholder="Nama lengkap"></label>
+          <label class="auth-label">NIM<input id="regNim" required placeholder="Nomor induk mahasiswa"></label>
+          <label class="auth-label">Username<input id="regUsername" required placeholder="Buat username"></label>
+          <label class="auth-label">Email<input id="regEmail" type="email" placeholder="nama@email.com" required></label>
+          <label class="auth-label">Program studi<select id="regProgram" required><option value="Informatika (IF)">Informatika (IF)</option><option value="Sistem Informasi (SI)">Sistem Informasi (SI)</option><option value="Manajemen (MNG)">Manajemen (MNG)</option></select></label>
+          <label class="auth-label">Kelas<select id="regClass" required><option value="IF-KA">IF-KA · Kelas Malam</option><option value="IF-KM">IF-KM · Kelas Pagi</option><option value="IF-EC">IF-EC · Employee Class</option></select></label>
+          <label class="auth-label">Semester<select id="regSemester" required><option>Y1S1</option><option>Y1S2</option><option>Y2S1</option><option>Y2S2</option><option>Y3S1</option><option>Y3S2</option><option>Y4S1</option><option>Y4S2</option></select></label>
+          <label class="auth-label">Password<input id="regPassword" type="password" minlength="6" required placeholder="Minimal 6 karakter"></label>
+          <button class="primary-button" type="submit">Buat Akun</button>
+          <p id="registerMessage" class="form-message"></p>
+          <button type="button" class="auth-back" data-auth-back>← Kembali ke Login</button>
+        </form>
+        <form id="forgotForm" class="auth-extra hidden">
+          <div class="auth-extra-heading"><h3>Atur Ulang Password</h3><p>Untuk prototipe ini, verifikasi dilakukan dengan username dan NIM.</p></div>
+          <label class="auth-label">Username<input id="forgotUsername" required placeholder="Username akun"></label>
+          <label class="auth-label">NIM<input id="forgotNim" required placeholder="NIM terdaftar"></label>
+          <label class="auth-label">Password baru<input id="forgotNewPassword" type="password" minlength="6" required placeholder="Minimal 6 karakter"></label>
+          <button class="primary-button" type="submit">Simpan Password Baru</button>
+          <p id="forgotMessage" class="form-message"></p>
+          <button type="button" class="auth-back" data-auth-back>← Kembali ke Login</button>
+        </form>
+        
+      </div>
+    </section>
+    <footer class="landing-footer">Universitas Horizon Indonesia<strong>#Selalu Bersamamu</strong></footer>
+  </div>
+
+  <!-- APLIKASI -->
+  <div id="appPage" class="hidden">
+    <header class="app-header">
+      <button type="button" class="menu-toggle" id="menuToggle" aria-label="Buka menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <button type="button" class="brand-small brand-home" data-go="home" aria-label="Kembali ke Beranda"><img src="assets/logo-horizon.webp" alt="Logo"><div><b>HORIZON <span>HUB</span></b><small>Universitas Horizon Indonesia</small></div></button>
+      <label class="global-search"><span><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg></span><input id="globalSearch" placeholder="Cari menu, ruangan, dosen..."></label>
+      <div class="header-actions"><div class="notification-wrap"><button type="button" class="notification-toggle" id="notificationToggle" aria-label="Buka notifikasi" aria-expanded="false" aria-controls="notificationPanel"><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M10 21h4"/></svg><span class="notification-count hidden" id="notificationCount">0</span></button><section class="notification-panel hidden" id="notificationPanel" aria-label="Notifikasi"><div class="notification-panel-head"><div><b>Notifikasi</b><small id="notificationSubtitle">Informasi terbaru untukmu</small></div><button type="button" id="markNotificationsRead" class="text-button">Tandai dibaca</button></div><div id="notificationList" class="notification-list"><div class="empty-state">Belum ada notifikasi.</div></div><button type="button" class="notification-see-all" data-go="announcements">Lihat pengumuman →</button></section></div><div class="user-area profile-menu-wrap"><button type="button" class="profile-shortcut" id="profileShortcut" aria-label="Buka menu profil" aria-expanded="false" aria-controls="profileDropdown"><span class="mini-avatar"><img src="assets/avatar-default.svg" alt="Avatar mahasiswa"></span><span id="roleBadge">Mahasiswa</span><svg class="profile-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><section class="profile-dropdown hidden" id="profileDropdown"><div class="profile-dropdown-person"><span class="dropdown-avatar"><img id="dropdownProfilePhoto" src="assets/avatar-default.svg" alt=""></span><span><b id="dropdownProfileName">Mahasiswa</b><small id="dropdownProfileMeta">Mahasiswa</small></span></div><button type="button" data-profile-action="profile">Profil Saya</button><button type="button" data-profile-action="preferences">Pengaturan Akun</button><button type="button" data-profile-action="help">Bantuan</button><div class="profile-dropdown-divider"></div><button type="button" class="profile-dropdown-logout" id="profileDropdownLogout">Keluar</button></section></div></div>
+    </header>
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+    <div class="app-layout">
+      <aside class="sidebar" id="appSidebar" aria-label="Navigasi utama">
+        <button type="button" class="drawer-brand brand-home" data-go="home" aria-label="Kembali ke Beranda"><img src="assets/logo-horizon.webp" alt=""><div><b>HORIZON <span>HUB</span></b><small>Universitas Horizon Indonesia</small></div></button><button type="button" class="drawer-close" id="drawerClose" aria-label="Tutup menu">×</button>
+        <button class="nav-button active" data-tab="home"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1z"/></svg><span>Beranda</span></button>
+        <button class="nav-button student-only" data-tab="planner"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2h6v2M8 10h8m-8 4h8m-8 4h5"/></svg><span>Student Planner</span></button>
+        <button class="nav-button student-only" data-tab="inventoryRequest"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16v14H4zM8 7V4h8v3m-8 5h8m-8 4h5"/></svg><span>Peminjaman Inventaris</span></button>
+        <button class="nav-button student-only" data-tab="history"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 2.6-6.4L3 8"/><path d="M3 3v5h5m4-1v5l3 2"/></svg><span>Riwayat Saya</span></button>
+        <button class="nav-button student-only" data-tab="booking"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z"/><path d="m4.3 7.7 7.7 4.5 7.7-4.5M12 12.2V21"/></svg><span>Peminjaman</span></button>
+        <button class="nav-button student-only" data-tab="calendarHub" aria-label="Buka Kalender"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2.2"/><path d="M7.5 2.8v3.4m9-3.4v3.4M3 9h18M7.5 13h2m3.5 0h2m-7.5 4h2m3.5 0h2"/></svg><span>Kalender</span></button>
+        <button class="nav-button student-only" data-tab="announcements"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14V9l15-5v15L4 14Z"/><path d="M4 9H2v5h2m3 1 2 5h4l-3-6"/></svg><span>Pengumuman</span></button>
+        <button class="nav-button student-only" data-tab="locations"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-6.2 8-13a8 8 0 1 0-16 0c0 6.8 8 13 8 13Z"/><circle cx="12" cy="9" r="2.5"/></svg><span>Explore Campus</span></button>
+        <button class="nav-button student-only" data-tab="directory"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.3A8.4 8.4 0 1 1 21 11.5Z"/><path d="M8.5 8.5c.7 3 2 4.3 5 5"/></svg><span>Kontak &amp; Layanan</span></button>
+        <div class="nav-group-label admin-only hidden">PENGELOLAAN KAMPUS</div>
+        <button class="nav-button admin-only hidden" data-tab="approval"><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg> <span>Approval Peminjaman</span></button>
+        <button class="nav-button admin-only hidden" data-tab="manageAcademicCalendar"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2.2"/><path d="M7.5 2.8v3.4m9-3.4v3.4M3 9h18M7.5 13h2m3.5 0h2m-7.5 4h2m3.5 0h2"/></svg><span>Kelola Kalender Akademik</span></button>
+        <button class="nav-button admin-only hidden" data-tab="manageSchedule"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M7 2v4m10-4v4M3 9h18M8 13h3m-3 4h7"/></svg><span>Kelola Jadwal Kuliah</span></button>
+        <button class="nav-button admin-only hidden" data-tab="manageClasses"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5.5A2.5 2.5 0 0 1 5.5 3H20v16H5.5A2.5 2.5 0 0 0 3 21.5z"/><path d="M3 5.5v16M7 7h9M7 11h9M7 15h6"/></svg><span>Daftar Kelas</span></button>
+        <button class="nav-button admin-only hidden" data-tab="manageLecturers"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 21v-1.5a6.5 6.5 0 0 1 13 0V21m2-11a3.5 3.5 0 1 0 0-7m1 11a6 6 0 0 1 3 5v2"/></svg><span>Kelola Dosen &amp; Staff</span></button>
+        <button class="nav-button admin-only hidden" data-tab="manageAnnouncements"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14V9l15-5v15L4 14Z"/><path d="M4 9H2v5h2m3 1 2 5h4l-3-6"/></svg><span>Kelola Pengumuman</span></button>
+        <button class="nav-button admin-only hidden" data-tab="manageStudents"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2 21v-1.5a7 7 0 0 1 14 0V21m3-13h4m-2-2v4"/></svg><span>Data Mahasiswa</span></button>
+        <button class="nav-button admin-only hidden" data-tab="manageRooms"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V5l9-3 9 3v16M3 21h18M8 21v-7h8v7M7 8h2m6 0h2m-10 3h2m6 0h2"/></svg><span>Kelola Ruangan &amp; Fasilitas</span></button>
+        <button class="nav-button admin-only hidden" data-tab="inventory"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16v14H4zM8 7V4h8v3m-8 5h8m-8 4h5"/></svg><span>Kelola Inventaris</span></button>
+        <div class="sidebar-motto"><b>#Selalu<br>Bersamamu</b><span>HORIZON HUB</span></div><button type="button" class="sidebar-profile-shortcut" id="sidebarProfileShortcut"><span class="sidebar-profile-avatar"><img id="sidebarProfilePhoto" src="assets/avatar-default.svg" alt=""></span><span><b id="sidebarProfileName">Mahasiswa</b><small id="sidebarProfileMeta">Mahasiswa</small></span><span class="sidebar-profile-arrow">›</span></button><button type="button" class="sidebar-settings-shortcut" id="sidebarSettingsShortcut"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="m19.4 15 .1.1a1.7 1.7 0 0 1-2.4 2.4l-.1-.1a1.7 1.7 0 0 0-2.9 1.2v.2a1.7 1.7 0 0 1-3.4 0v-.2a1.7 1.7 0 0 0-2.9-1.2l-.1.1a1.7 1.7 0 0 1-2.4-2.4l.1-.1a1.7 1.7 0 0 0-1.2-2.9H4a1.7 1.7 0 0 1 0-3.4h.2a1.7 1.7 0 0 0 1.2-2.9l-.1-.1a1.7 1.7 0 0 1 2.4-2.4l.1.1a1.7 1.7 0 0 0 2.9-1.2V2a1.7 1.7 0 0 1 3.4 0v.2a1.7 1.7 0 0 0 2.9 1.2l.1-.1a1.7 1.7 0 0 1 2.4 2.4l-.1.1a1.7 1.7 0 0 0 1.2 2.9h.2a1.7 1.7 0 0 1 0 3.4h-.2a1.7 1.7 0 0 0-1.2 2.9Z"/></svg> Pengaturan</button>
+      <button type="button" class="drawer-logout" id="drawerLogoutButton">
+          <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 17l5-5-5-5M15 12H3"/><path d="M12 3h6a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-6"/></svg>
+          <span>Keluar</span>
+        </button>
+      </aside>
+      <main class="main-content">
+        <!-- BERANDA -->
+        <section id="homeTab" class="tab-content">
+          <div id="adminDashboard" class="hidden">
+            <div class="page-heading"><p class="eyebrow">ADMINISTRATOR PANEL</p><h1>Dashboard <em>Admin</em></h1><p>Kelola aktivitas akademik dan layanan Universitas Horizon Indonesia.</p></div>
+            <div class="admin-welcome content-card"><span class="tag">HORIZON HUB · ADMIN</span><h2>Selamat datang, Administrator.</h2><p>Kelola layanan, data akademik, fasilitas, dan informasi kampus dari satu tempat.</p></div>
+            <div class="admin-stat-grid"><article class="admin-stat-card"><small>Total Akun Mahasiswa</small><b id="adminStudentCount">0</b><span>akun terdaftar</span></article><article class="admin-stat-card"><small>Menunggu Approval</small><b id="adminPendingCount">0</b><span>pengajuan peminjaman</span></article><article class="admin-stat-card"><small>Peminjaman Disetujui</small><b id="adminApprovedCount">0</b><span>pengajuan disetujui</span></article><article class="admin-stat-card"><small>Jadwal Tambahan</small><b id="adminScheduleCount">0</b><span>jadwal yang dikelola admin</span></article></div>
+            <div class="home-columns"><div class="content-card"><div class="section-title"><h2>Pengajuan Perlu Ditindaklanjuti</h2><span class="tag">ACTION CENTER</span></div><p>Periksa pengajuan ruangan dan inventaris. Masing-masing memiliki antrean persetujuan tersendiri.</p><div class="admin-quick-actions"><button class="primary-button small-button" data-go="approval">Review Booking Ruangan</button><button class="outline-button" data-go="inventory">Review Inventaris</button></div></div><div class="content-card"><h2>Akses Cepat</h2><div class="admin-quick-actions"><button class="outline-button" data-go="manageSchedule">+ Tambah Jadwal</button><button class="outline-button" data-go="manageRooms">Kelola Ruangan</button><button class="outline-button" data-go="manageAnnouncements">+ Buat Pengumuman</button></div></div></div>
+          </div>
+          <div id="studentDashboard" class="student-dashboard">
+            <section class="home-campus-banner student-photo-carousel" aria-label="Kehidupan mahasiswa Universitas Horizon Indonesia">
+              <div class="student-photo-slides">
+                <img class="student-photo-slide is-active" src="assets/students-library.webp" alt="Mahasiswa Horizon belajar bersama di perpustakaan" fetchpriority="high">
+                <img class="student-photo-slide" src="assets/students-lab.webp" alt="Mahasiswa Horizon di laboratorium komputer" loading="lazy">
+                <img class="student-photo-slide" src="assets/students-community.webp" alt="Kebersamaan mahasiswa Horizon di lingkungan kampus" loading="lazy">
+                <img class="student-photo-slide" src="assets/students-classroom.webp" alt="Mahasiswa Horizon aktif mengikuti kegiatan kelas" loading="lazy">
+              </div>
+              <div class="student-photo-shade"></div>
+              <div class="student-photo-caption">
+                <span>UNIVERSITAS HORIZON INDONESIA</span>
+                <strong>One Campus,<br>Many Possibilities.</strong>
+                <i aria-hidden="true"></i>
+              </div>
+              <div class="student-photo-dots" role="group" aria-label="Pilih foto banner">
+                <button type="button" class="is-active" aria-label="Foto 1" aria-pressed="true"></button>
+                <button type="button" aria-label="Foto 2" aria-pressed="false"></button>
+                <button type="button" aria-label="Foto 3" aria-pressed="false"></button>
+                <button type="button" aria-label="Foto 4" aria-pressed="false"></button>
+              </div>
+            </section>
+            <section class="dashboard-welcome"><div class="dashboard-welcome-copy"><p class="eyebrow">STUDENT DASHBOARD · <span id="homeTodayDate">HARI INI</span></p><h1 id="homeGreeting">Selamat datang, <em>Mahasiswa!</em></h1><p>Semua yang kamu butuhkan untuk menjalani aktivitas kampus, dalam satu tempat.</p></div><img class="campus-lineart" src="assets/campus-lineart.png" alt="Ilustrasi gedung Universitas Horizon Indonesia"></section>
+            <section class="overview-strip" aria-label="Ringkasan aktivitas">
+              <button type="button" class="overview-item" data-go="planner"><span class="overview-icon"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 9.5h18M8 14l2 2 5-5"/></svg></span><span><b id="overviewTaskCount">0</b><small>Tugas aktif</small></span></button>
+              <button type="button" class="overview-item" data-go="history"><span class="overview-icon"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5M3 16l9 5 9-5"/></svg></span><span><b id="overviewLoanCount">0</b><small>Peminjaman diproses</small></span></button>
+              <button type="button" class="overview-item" data-go="schedule"><span class="overview-icon"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21z"/><path d="M4 5.5v13A2.5 2.5 0 0 1 6.5 16H20"/></svg></span><span><b id="overviewNextClass">—</b><small>Kelas berikutnya</small></span></button>
+              <button type="button" class="overview-item" id="overviewNotificationLink"><span class="overview-icon"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M10 21h4"/></svg></span><span><b id="overviewUnreadCount">0</b><small>Notifikasi baru</small></span></button>
+            </section>
+            <section class="home-quick-links" aria-label="Menu cepat"><div class="home-quick-heading"><h2>Menu Cepat</h2><span>Akses fitur utama</span></div><div class="home-quick-grid"><button type="button" data-go="calendarHub"><span class="quick-link-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2"/><path d="M7.5 2.8v3.4m9-3.4v3.4M3 9h18m-11 4h4m-4 4h4"/></svg></span><b>Kalender</b><small>Jadwal &amp; agenda</small></button><button type="button" data-go="planner"><span class="quick-link-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5A2.5 2.5 0 0 1 5.5 3H12v17H5.5A2.5 2.5 0 0 0 3 22zM21 5.5A2.5 2.5 0 0 0 18.5 3H12v17h6.5a2.5 2.5 0 0 1 2.5 2z"/></svg></span><b>Student Planner</b><small>Tugas &amp; pengingat</small></button><button type="button" data-go="inventoryRequest"><span class="quick-link-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z"/><path d="m4.3 7.7 7.7 4.5 7.7-4.5M12 12.2V21"/></svg></span><b>Inventaris</b><small>Ajukan perlengkapan</small></button><button type="button" data-go="announcements"><span class="quick-link-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 14V9l15-5v15L4 14Z"/><path d="M4 9H2v5h2m3 1 2 5h4l-3-6"/></svg></span><b>Pengumuman</b><small>Info kampus</small></button></div></section>
+            <div class="dashboard-grid">
+              <div class="dashboard-main-column">
+                <section class="dashboard-section content-card home-planner"><div class="dashboard-section-heading"><div><p class="eyebrow">KEEP ON TRACK</p><h2>Student <em>Planner</em></h2><p class="section-description">Prioritaskan tugas dan agenda terdekatmu.</p></div><button data-go="planner" class="text-button">Lihat semua →</button></div><div id="homePlannerPreview" class="home-planner-preview"><div class="empty-state">Belum ada pengingat. Tambahkan tugas melalui Student Planner.</div></div><div class="planner-progress"><span>Progress tugas</span><b id="homePlannerProgressText">0% selesai</b><div class="progress-track"><span id="homePlannerProgressBar"></span></div></div></section>
+                <section class="dashboard-section content-card"><div class="dashboard-section-heading"><div><p class="eyebrow">CAMPUS UPDATES</p><h2>Pengumuman <em>Terbaru</em></h2><p class="section-description">Informasi penting dari kampus.</p></div><button data-go="announcements" class="text-button">Lihat semua →</button></div><div id="homeAnnouncementPreview" class="home-announcement-list"></div></section>
+              </div>
+              <div class="dashboard-side-column">
+                <section class="dashboard-section content-card"><div class="dashboard-section-heading"><div><p class="eyebrow">YOUR ACADEMIC DAY</p><h2>Today's <em>Class</em></h2><p class="section-description">Jadwal perkuliahan hari ini.</p></div><button data-go="schedule" class="text-button">Lihat jadwal →</button></div><div id="homeTodayClass" class="today-class-preview"><div class="empty-state">Memuat jadwal hari ini...</div></div></section>
+                <section class="dashboard-section content-card"><div class="dashboard-section-heading"><div><p class="eyebrow">ROOM &amp; FACILITY</p><h2>Ringkasan <em>Peminjaman</em></h2><p class="section-description">Pantau status pengajuan ruangan dan fasilitas.</p></div><button data-go="history" class="text-button">Lihat detail →</button></div><div class="loan-status-strip"><div class="loan-status pending"><b id="homePending">0</b><span>Menunggu</span></div><div class="loan-status approved"><b id="homeApproved">0</b><span>Disetujui</span></div><div class="loan-status rejected"><b id="homeRejected">0</b><span>Ditolak</span></div></div><div class="loan-footer"><span><b id="homeTotal">0</b> total pengajuan</span><button type="button" class="primary-button small-button" data-go="booking">Ajukan peminjaman</button></div></section>
+
+              </div>
+            </div>
+                <section class="dashboard-section content-card explore-section"><div class="dashboard-section-heading"><div><p class="eyebrow">DISCOVER YOUR CAMPUS</p><h2>Explore <em>Campus</em></h2><p class="section-description">Temukan ruang, fasilitas, dan orang-orang di kampus.</p></div></div><div class="explore-link-grid">
+                  <button type="button" data-go="locations"><span class="explore-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6.5 9 3l6 3.5L21 3v14.5L15 21l-6-3.5L3 21V6.5Z"/><path d="M9 3v14.5M15 6.5V21"/></svg></span><b>Denah Gedung</b><small>East &amp; West Building</small></button>
+                  <button type="button" data-go="locations"><span class="explore-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg></span><b>Direktori Ruangan</b><small>Temukan lokasi kelas</small></button>
+                  <button type="button" data-go="booking"><span class="explore-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10h18v4H3zM5 14v7m14-7v7M7 10V5h10v5"/></svg></span><b>Fasilitas Kampus</b><small>Ajukan peminjaman</small></button>
+                  <button type="button" data-go="directory"><span class="explore-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 21v-1.5a6.5 6.5 0 0 1 13 0V21m2-10a3 3 0 1 0 0-6m1 9a5.5 5.5 0 0 1 3 5"/></svg></span><b>Dosen &amp; Staff</b><small>Direktori kontak kampus</small></button>
+                </div></section>
+          </div>
+        </section>
+
+        <!-- KALENDER AKADEMIK MAHASISWA -->
+        <section id="academicCalendarTab" class="tab-content hidden student-only">
+          <div class="calendar-view-switch" role="tablist" aria-label="Jenis kalender"><button type="button" class="calendar-view-tab" data-calendar-view="schedule" role="tab"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 9h18M7 13h3m4 0h3"/></svg>Jadwal Kuliah</button><button type="button" class="calendar-view-tab" data-calendar-view="academicCalendar" role="tab"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2"/><path d="M7.5 2.8v3.4m9-3.4v3.4M3 9h18"/></svg>Kalender Akademik</button></div>
+          <div class="page-heading"><p class="eyebrow">ACADEMIC YEAR 2026/2027</p><h1>Kalender <em>Akademik</em></h1><p>Informasi periode perkuliahan, ujian, registrasi, dan agenda resmi kampus.</p></div>
+          <div class="content-card academic-calendar-card"><div class="academic-calendar-toolbar"><button type="button" class="outline-button" id="studentCalendarPrev" aria-label="Bulan sebelumnya">‹</button><div class="academic-month-title"><h2 id="studentCalendarHeading">November 2026</h2><span class="tag">SY 2026/2027</span></div><button type="button" class="outline-button" id="studentCalendarNext" aria-label="Bulan berikutnya">›</button></div><div class="academic-calendar-weekdays"><span>Sen</span><span>Sel</span><span>Rab</span><span>Kam</span><span>Jum</span><span>Sab</span><span>Min</span></div><div id="studentAcademicGrid" class="academic-calendar-grid"></div><div class="academic-selected-heading"><h3 id="studentSelectedDateTitle">Agenda terpilih</h3><span class="field-hint">Pilih tanggal untuk melihat detail agenda</span></div><div id="studentAcademicEvents" class="academic-event-list"></div></div>
+          <p class="notice">Kalender ini menggunakan data awal dari Academic Calendar SY 2026/2027 Horizon University Indonesia. Perubahan resmi mengikuti pembaruan dari pihak kampus.</p>
+        </section>
+
+        <!-- JADWAL KULIAH PERSONAL -->
+        <section id="scheduleTab" class="tab-content hidden schedule-page">
+          <div class="calendar-view-switch" role="tablist" aria-label="Jenis kalender"><button type="button" class="calendar-view-tab" data-calendar-view="schedule" role="tab"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 9h18M7 13h3m4 0h3"/></svg>Jadwal Kuliah</button><button type="button" class="calendar-view-tab" data-calendar-view="academicCalendar" role="tab"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2"/><path d="M7.5 2.8v3.4m9-3.4v3.4M3 9h18"/></svg>Kalender Akademik</button></div>
+          <div class="page-heading"><p class="eyebrow">ACADEMIC LIFE</p><h1>My <em>Schedule</em></h1><p>Jadwal otomatis berdasarkan detail akademik siswa.</p></div>
+          <div class="today-banner">
+            <div><span class="today-kicker">TODAY</span><h2 id="todayDate">Memuat tanggal...</h2><p id="todaySubtitle">Your daily class schedule</p></div>
+            <button type="button" class="today-calendar-icon" id="todayCalendarButton" aria-label="Lihat jadwal mingguan" title="Lihat jadwal mingguan"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18M8 14h2m4 0h2m-8 3h2m4 0h2"/></svg></button>
+          </div>
+          <div class="today-card content-card">
+            <div class="section-title"><h2>Today's Class</h2><span class="tag" id="todayClassCount">JADWAL HARI INI</span></div>
+            <div id="todayClasses" class="today-classes"></div>
+          </div>
+          <div class="print-student-summary">Nama: <b id="printStudentName">Mahasiswa Demo</b> · NIM: <b id="printStudentNim">-</b> · Prodi: <b id="printStudentProgram">Informatika (IF)</b> · Kelas: <b id="printStudentClass">IF-KA</b> · Semester: <b id="printStudentSemester">Y1S1</b></div>
+          <div class="schedule-toolbar"><span>Jadwal Mingguan · Semester Ganjil 2026/2027</span><button id="printSchedule" class="outline-button">Cetak Jadwal</button></div>
+          <div id="weeklySchedule" class="weekly-schedule"></div>
+          <p class="notice">Data jadwal mata kuliah, dosen, dan ruangan pada tampilan demo merupakan contoh. Data resmi akan mengikuti input akademik kampus.</p>
+        </section>
+
+        <!-- PROFIL SAYA: TAB PROFIL, KEAMANAN, PREFERENSI -->
+        <section id="profileTab" class="tab-content hidden profile-page">
+          <div class="page-heading profile-page-heading"><p class="eyebrow">AKUN MAHASISWA / PROFIL SAYA</p><h1>Profil <em>Saya</em></h1><p>Kelola informasi pribadi dan preferensi akunmu.</p></div>
+          <div class="profile-hero content-card">
+            <div class="profile-avatar"><img id="profileStudentPhoto" src="assets/avatar-default.svg" alt="Avatar profil mahasiswa"></div>
+            <div class="profile-hero-copy"><span class="profile-source">STUDENT ACCOUNT</span><h2 id="profileStudentName">Mahasiswa Demo</h2><span id="profileStudentNim" class="hidden"></span><p id="profileStudentMeta">Mahasiswa · Informatika</p><span class="profile-active-status">● Mahasiswa Aktif</span></div>
+            <button type="button" class="outline-button profile-edit-trigger" data-profile-tab="profile"><svg class="profile-action-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z"/></svg><span>Ubah Foto Profil</span></button>
+          </div>
+          <div class="profile-tabbar" role="tablist" aria-label="Pengaturan profil">
+            <button type="button" class="profile-tab-button active" data-profile-tab="profile" role="tab" aria-selected="true"><svg class="profile-tab-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 21v-1.5a7 7 0 0 1 14 0V21"/></svg><span>Profil</span></button>
+            <button type="button" class="profile-tab-button" data-profile-tab="security" role="tab" aria-selected="false"><svg class="profile-tab-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 5v2"/></svg><span>Keamanan</span></button>
+            <button type="button" class="profile-tab-button" data-profile-tab="preferences" role="tab" aria-selected="false"><svg class="profile-tab-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="9" cy="6" r="2" fill="currentColor" stroke="none"/><circle cx="15" cy="12" r="2" fill="currentColor" stroke="none"/><circle cx="11" cy="18" r="2" fill="currentColor" stroke="none"/></svg><span>Preferensi</span></button>
+          </div>
+          <div class="profile-panel content-card" data-profile-panel="profile">
+            <div class="profile-information-column"><div class="profile-panel-heading"><h2>Informasi Akademik</h2><p>Data identitas mahasiswa yang terdaftar di sistem kampus.</p></div>
+              <div class="profile-data-list"><div><span>Nama Lengkap</span><b id="profileNameDetail">Mahasiswa Demo</b></div><div><span>NIM</span><b id="profileNimDetail">—</b></div><div><span>Username</span><b id="profileUsername">mahasiswa</b></div><div><span>Program Studi</span><b id="profileProgram">Informatika (IF)</b></div><div><span>Kelas</span><b id="profileClass">IF-KA · Kelas Malam</b></div><div><span>Semester</span><b id="profileSemester">Y1S1</b></div><div><span>Email Kampus</span><b id="profileEmail">Belum diatur</b></div></div>
+              <p class="profile-inline-note">Data akademik bersifat baca-saja. Jika ada kesalahan, hubungi layanan administrasi kampus.</p>
+            </div>
+            <div class="profile-personal-column"><div class="profile-panel-heading"><h2>Personalisasi</h2><p>Atur informasi yang ditampilkan di Horizon Hub.</p></div>
+              <div class="profile-settings-fields"><label>Nama lengkap<input id="settingsFullName" type="text" readonly></label><label>Nama panggilan<input id="settingsNickname" type="text" maxlength="30" placeholder="Contoh: Elza"></label><fieldset><legend>Nama yang ditampilkan</legend><label class="profile-radio"><input type="radio" name="profileDisplayMode" value="nickname"> Gunakan nama panggilan</label><label class="profile-radio"><input type="radio" name="profileDisplayMode" value="fullname"> Gunakan nama lengkap</label></fieldset></div>
+              <div class="profile-photo-controls"><label class="profile-upload-label" for="profilePhotoInput">Pilih Foto dari Perangkat</label><input id="profilePhotoInput" class="profile-file-input" type="file" accept="image/*"><button type="button" class="text-button" id="resetProfilePhoto">Reset Foto</button></div>
+              <div class="profile-settings-actions"><button type="button" class="primary-button" id="saveProfileSettings">Simpan Perubahan</button></div><p id="profileSettingsMessage" class="form-message" role="status"></p>
+            </div>
+          </div>
+          <div class="profile-panel content-card hidden" data-profile-panel="security">
+            <div class="profile-panel-heading"><h2>Keamanan Akun</h2><p>Perbarui password dan periksa keamanan akunmu.</p></div>
+            <form id="profilePasswordForm" class="profile-security-form"><label>Password Saat Ini<input id="profileCurrentPassword" type="password" autocomplete="current-password" required placeholder="Masukkan password saat ini"></label><label>Password Baru<input id="profileNewPassword" type="password" minlength="6" autocomplete="new-password" required placeholder="Minimal 6 karakter"></label><label>Konfirmasi Password Baru<input id="profileConfirmPassword" type="password" minlength="6" autocomplete="new-password" required placeholder="Ulangi password baru"></label><button class="primary-button" type="submit">Perbarui Password</button><p id="profilePasswordMessage" class="form-message" role="status"></p></form>
+            <div class="profile-security-tip"><b>Tips keamanan</b><p>Gunakan password yang unik dan jangan membagikannya kepada orang lain. Pada prototipe ini, perubahan password tersimpan lokal di browser.</p></div>
+          </div>
+          <div class="profile-panel content-card hidden" data-profile-panel="preferences">
+            <div class="profile-panel-heading"><h2>Preferensi Akun</h2><p>Atur informasi dan pemberitahuan yang ingin kamu terima.</p></div>
+            <div class="profile-preference-list"><label><span><b>Pengumuman kampus</b><small>Informasi akademik dan kegiatan kampus.</small></span><input type="checkbox" data-pref="announcements" checked></label><label><span><b>Pengingat tugas</b><small>Pengingat agenda dan deadline Student Planner.</small></span><input type="checkbox" data-pref="tasks" checked></label><label><span><b>Status peminjaman</b><small>Pembaruan persetujuan peminjaman.</small></span><input type="checkbox" data-pref="booking" checked></label><label><span><b>Perubahan jadwal</b><small>Informasi perubahan jadwal kuliah.</small></span><input type="checkbox" data-pref="schedule" checked></label></div>
+            <div class="profile-preference-footer"><span><b>Tampilan</b><small>Horizon Hub menggunakan tema maroon–cream.</small></span><span class="profile-theme-chip">Light Mode</span></div><button type="button" class="primary-button" id="saveProfilePreferences">Simpan Preferensi</button><p id="profilePreferencesMessage" class="form-message" role="status"></p>
+          </div>
+          <p class="notice">Foto, nama panggilan, dan preferensi tersimpan di browser/perangkat ini. Sinkronisasi antarperangkat memerlukan database dan layanan online.</p>
+        </section>
+
+        <!-- LOKASI -->
+        <section id="locationsTab" class="tab-content hidden">
+          <div class="page-heading"><p class="eyebrow">CAMPUS DIRECTORY</p><h1>Denah <em>Gedung</em></h1><p>Pilih gedung dan lantai, lalu ketuk penanda ruangan pada denah.</p></div>
+          <div class="content-card official-map-card">
+            <div class="section-title"><h2>Denah Gedung Interaktif</h2><span class="tag">PETA KAMPUS</span></div>
+            <p class="muted">Pilih gedung dan lantai. Ketuk nama ruang pada daftar untuk melihat informasi dan melanjutkan ke peminjaman.</p>
+            <div class="form-grid map-controls"><label>Gedung<select id="mapBuilding"><option value="W">West Building</option><option value="E">East Building</option></select></label><label>Lantai<select id="mapFloor"><option value="1">Lantai 1</option><option value="2">Lantai 2</option><option value="3">Lantai 3</option></select></label></div>
+            <div id="officialMapImage" class="official-map-image"><img src="assets/west-floor-1.png" alt="Denah resmi West Building lantai 1"></div>
+            <p id="mapSourceNote" class="hint">Denah resmi West Building. Pilih ruang di daftar untuk melihat detail.</p>
+            <div id="officialMapRooms" class="map-room-list"></div>
+            <div id="mapRoomDetail" class="map-room-detail hidden"></div>
+          </div>
+        </section>
+
+        <!-- ADMIN ACADEMIC CALENDAR MANAGEMENT -->
+        <section id="manageAcademicCalendarTab" class="tab-content hidden admin-only">
+          <div class="page-heading"><p class="eyebrow">ACADEMIC MANAGEMENT</p><h1>Kelola Kalender <em>Akademik</em></h1><p>Kelola agenda akademik yang akan ditampilkan pada akun mahasiswa.</p></div>
+          <div class="content-card"><form id="adminAcademicEventForm" class="form-grid"><label>Nama agenda<input id="academicEventTitle" required placeholder="Contoh: Ujian Semester"></label><label>Tanggal mulai<input id="academicEventStart" type="date" required></label><label>Tanggal selesai (opsional)<input id="academicEventEnd" type="date"></label><label>Kategori<select id="academicEventCategory"><option>Akademik</option><option>Ujian</option><option>Registrasi</option><option>Kegiatan Kampus</option><option>Libur Nasional</option><option>Batas Waktu</option></select></label><label class="full">Keterangan<textarea id="academicEventDescription" rows="2" placeholder="Keterangan agenda (opsional)"></textarea></label><button class="primary-button full" type="submit">＋ Tambahkan Agenda</button></form></div>
+          <div class="content-card academic-calendar-card"><div class="academic-calendar-toolbar"><button type="button" class="outline-button" id="adminCalendarPrev" aria-label="Bulan sebelumnya">‹</button><div class="academic-month-title"><h2 id="adminCalendarHeading">November 2026</h2><span class="tag">SY 2026/2027</span></div><button type="button" class="outline-button" id="adminCalendarNext" aria-label="Bulan berikutnya">›</button></div><div class="academic-calendar-weekdays"><span>Sen</span><span>Sel</span><span>Rab</span><span>Kam</span><span>Jum</span><span>Sab</span><span>Min</span></div><div id="adminAcademicGrid" class="academic-calendar-grid"></div><div class="academic-selected-heading"><h3 id="adminSelectedDateTitle">Agenda pada tanggal terpilih</h3></div><div id="adminAcademicEvents" class="academic-event-list"></div></div>
+          <p class="notice">Perubahan agenda pada prototype ini tersimpan di browser/perangkat yang digunakan (localStorage), belum tersinkronisasi ke database atau perangkat lain.</p>
+        </section>
+
+        <!-- ADMIN INVENTORY MANAGEMENT -->
+        <section id="inventoryTab" class="tab-content hidden admin-only">
+          <div class="page-heading"><p class="eyebrow">ASSET MANAGEMENT</p><h1>Kelola <em>Inventaris</em></h1><p>Kelola stok demo, proses pengajuan, dan catat pengembalian barang.</p></div>
+          <div class="inventory-admin-summary" id="inventoryAdminSummary"></div>
+          <div class="content-card"><div class="section-title"><h2>Daftar Inventaris</h2><span class="tag">DATA DEMO</span></div><div class="inventory-toolbar"><label class="inventory-search-label">Cari inventaris<input id="adminInventorySearch" type="search" placeholder="Cari proyektor, speaker, kamera..."></label><label>Kategori<select id="adminInventoryCategory"><option value="all">Semua kategori</option><option value="av">Audio &amp; Visual</option><option value="furniture">Furnitur</option><option value="accessory">Aksesori</option></select></label></div><div id="inventoryAdminCatalog" class="inventory-admin-grid"></div></div>
+          <div class="content-card"><div class="section-title"><h2>Pengajuan Inventaris</h2><span class="tag">ADMIN APPROVAL</span></div><div id="inventoryApprovalList" class="stack-list"></div></div>
+          <div class="content-card"><div class="section-title"><h2>Siap Diambil</h2><span class="tag">MENUNGGU SERAH TERIMA</span></div><div id="inventoryReadyList" class="stack-list"></div></div>
+          <div class="content-card"><div class="section-title"><h2>Barang Sedang Dipinjam</h2><span class="tag">SERAH TERIMA</span></div><div id="inventoryBorrowedList" class="stack-list"></div></div>
+          <p class="notice">Seluruh jumlah stok pada prototype adalah data simulasi, bukan data inventaris resmi Universitas Horizon Indonesia.</p>
+        </section>
+
+        <!-- STUDENT INVENTORY REQUEST -->
+        <section id="inventoryRequestTab" class="tab-content hidden student-only">
+          <div class="page-heading"><p class="eyebrow">CAMPUS ASSET SERVICE</p><h1>Peminjaman <em>Inventaris</em></h1><p>Ajukan peminjaman perlengkapan kampus untuk digunakan di area kampus.</p></div>
+          <div class="content-card"><div class="section-title"><h2>Daftar Inventaris</h2><span class="tag">STOK SIMULASI</span></div><div class="inventory-toolbar"><label class="inventory-search-label">Cari inventaris<input id="studentInventorySearch" type="search" placeholder="Cari proyektor, speaker, kamera..."></label><label>Kategori<select id="studentInventoryCategory"><option value="all">Semua kategori</option><option value="av">Audio &amp; Visual</option><option value="furniture">Furnitur</option><option value="accessory">Aksesori</option></select></label></div><div id="studentInventoryCatalog" class="inventory-grid"></div></div>
+          <div class="content-card inventory-request-card"><div class="section-title"><h2>Formulir Peminjaman</h2><span class="tag">WAJIB APPROVAL ADMIN</span></div>
+            <form id="assetLoanForm" class="form-grid">
+              <label>Nama fasilitas<select id="assetLoanItem" required><option value="">Pilih fasilitas</option><option>Proyektor</option><option>Speaker</option><option>Mikrofon</option><option>Kamera</option><option>Kursi</option><option>Meja</option><option>Kabel / adaptor</option></select></label>
+              <label>Jumlah<input id="assetLoanQty" type="number" min="1" max="50" required placeholder="Jumlah barang"></label>
+              <label>Tanggal penggunaan<input id="assetLoanDate" type="date" required></label>
+              <label>Waktu mulai<input id="assetLoanStart" type="time" required></label>
+              <label>Tanggal pengembalian<input id="assetReturnDate" type="date" required></label>
+              <label>Waktu pengembalian<input id="assetLoanEnd" type="time" required></label>
+              <div class="full availability-summary" id="assetStockAvailability" aria-live="polite">Pilih barang dan periode peminjaman untuk melihat ketersediaan stok simulasi.</div>
+              <label class="full">Lokasi penggunaan di kampus<input id="assetUsageLocation" required placeholder="Contoh: Aula Gedung Barat"></label>
+              <label class="full">Keperluan<textarea id="assetLoanPurpose" rows="3" required placeholder="Jelaskan kegiatan atau keperluan peminjaman"></textarea></label>
+              <div class="full"><p class="notice">Inventaris hanya dapat digunakan di area kampus dan wajib dikembalikan sesuai jadwal. Pengajuan akan diperiksa admin.</p><button class="primary-button" type="submit">Kirim Pengajuan Inventaris →</button><p id="assetLoanMessage" class="form-message" role="status"></p></div>
+            </form>
+          </div>
+        </section>
+
+        <!-- PEMINJAMAN -->
+        <section id="bookingTab" class="tab-content hidden">
+          <div class="page-heading"><p class="eyebrow">CAMPUS FACILITY SERVICE</p><h1>Peminjaman <em>Ruangan</em></h1><p>Pilih jenis ruangan atau fasilitas yang ingin digunakan.</p></div>
+          <div class="booking-steps" id="bookingSteps"><button type="button" class="current" data-step-indicator="1" aria-current="step">1 · Kategori</button><button type="button" data-step-indicator="2">2 · Pilih ruangan</button><button type="button" data-step-indicator="3">3 · Jadwal &amp; detail</button></div>
+          <div class="booking-wizard-step" data-booking-step="1">
+            <h2 class="wizard-title">Pilih jenis ruangan atau fasilitas</h2>
+            <div class="category-grid" id="categoryGrid">
+              <button class="category-card selected" data-category="classroom"><img src="assets/ruang-kelas.jpg" alt="Ruang kelas"><b>Ruang Kelas</b><small>Perkuliahan, diskusi, organisasi</small></button>
+              <button class="category-card" data-category="lab"><img src="assets/laboratorium.jpg" alt="Laboratorium"><b>Laboratorium</b><small>Komputer dan praktik akademik</small></button>
+              <button class="category-card" data-category="hall"><img src="assets/aula.jpg" alt="Aula"><b>Aula</b><small>Seminar dan kegiatan besar</small></button>
+              <button class="category-card" data-category="meeting"><img src="assets/ruang-kelas.jpg" alt="Ruang rapat"><b>Ruang Rapat</b><small>Rapat dan diskusi kelompok</small></button>
+            </div>
+            <div class="wizard-actions"><span></span><button type="button" class="primary-button" id="bookingNext1">Lanjutkan →</button></div>
+          </div>
+          <div class="booking-wizard-step hidden" data-booking-step="2">
+            <div class="content-card booking-panel"><h2 id="selectedCategoryTitle">Pilih Ruang Kelas</h2>
+              <div id="classroomFilters" class="form-grid"><label>Gedung<select id="bookingBuilding"><option value="W">West Building</option><option value="E">East Building</option></select></label><label>Lantai<select id="bookingFloor"></select></label></div>
+              <div id="otherResourceWrap" class="hidden"><label class="standalone-label">Pilih ruangan / fasilitas<select id="otherResource"></select></label></div>
+              <p id="bookingRoomHint" class="hint">Pilih ruangan yang tersedia.</p><div id="bookingRoomGrid" class="room-grid"></div>
+            </div>
+            <div class="wizard-actions"><button type="button" class="secondary-button" id="bookingBack2">← Kembali</button><button type="button" class="primary-button" id="bookingNext2">Lanjutkan →</button></div>
+          </div>
+          <div class="booking-wizard-step hidden" data-booking-step="3">
+            <div class="content-card booking-panel"><h2>Jadwal &amp; Detail Peminjaman</h2>
+              <form id="bookingForm" class="form-grid booking-form">
+                <label>Tanggal<input id="bookingDate" type="date" required><small class="field-error" id="bookingDateError" aria-live="polite"></small></label><label>Waktu Mulai<input id="bookingStart" type="time" required><small class="field-error" id="bookingStartError" aria-live="polite"></small></label><label>Waktu Selesai<input id="bookingEnd" type="time" required><small class="field-error" id="bookingEndError" aria-live="polite"></small></label>
+                <div class="full"><div id="bookingSelectedRoom"></div><p id="bookingRoomHintStep3" class="hint">Pilih tanggal dan jam untuk mengecek ketersediaan.</p><div id="bookingAvailabilitySummary" class="availability-summary">Pilih tanggal, waktu mulai, dan waktu selesai untuk mengecek ketersediaan.</div></div>
+                <div class="identity-readonly"><span>Nama peminjam</span><strong id="borrowerNameDisplay">-</strong><small>Terisi otomatis dari akun yang sedang login</small></div><div class="identity-readonly"><span>NIM</span><strong id="borrowerNimDisplay">-</strong><small>Terhubung dengan profil mahasiswa</small></div>
+                <label>Jumlah peserta<input id="borrowerCount" type="number" min="1" placeholder="Masukkan jumlah peserta"><small id="borrowerCapacityHint" class="hint">Kapasitas resmi ruangan belum didata. Jumlah peserta akan dibatasi setelah data kapasitas dikonfirmasi admin.</small></label><label class="full">Fasilitas yang dibutuhkan<select id="bookingFacilityNeeds" multiple size="4"><option>Proyektor</option><option>Komputer</option><option>Papan tulis</option><option>Sound system</option><option>Internet / Wi-Fi</option><option>AC</option></select><small class="hint">Pilih kebutuhan fasilitas. Ketersediaannya akan dikonfirmasi oleh admin.</small></label><label class="full">Keperluan<textarea id="bookingPurpose" rows="3" required placeholder="Contoh: kegiatan diskusi kelompok"></textarea></label>
+                <div class="wizard-actions full booking-final-actions"><button type="button" class="secondary-button" id="bookingBack3">← Kembali</button><button class="primary-button" type="submit">Kirim Pengajuan →</button></div>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <!-- DIREKTORI -->
+        <section id="directoryTab" class="tab-content hidden">
+          <div class="page-heading"><p class="eyebrow">CAMPUS CONTACT &amp; SUPPORT</p><h1>Kontak <em>Layanan Kampus</em></h1><p>Hubungi departemen terkait sesuai kebutuhan layananmu.</p></div>
+          <div class="directory-grid" id="studentDirectoryGrid">
+            <article class="contact-card"><div class="contact-icon"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.3A8.4 8.4 0 1 1 21 11.5Z"/><path d="M8.5 8.5c.7 3 2 4.3 5 5"/></svg></div><b>ITSD – IT Service Desk</b><span>Pelayanan ITSD</span><p>Bantuan teknis, kendala akun, akses sistem, dan layanan teknologi informasi.</p><a href="https://wa.me/6285183107593" target="_blank" rel="noopener">WhatsApp 0851-8310-7593</a><a href="mailto:itsd.krw@horizon.ac.id">itsd.krw@horizon.ac.id</a><small>Senin–Jumat · 08.00–16.00</small><a href="https://oss.horizon.ac.id/login" target="_blank" rel="noopener">Portal OSS</a><a href="https://bit.ly/HorizonTiketIT" target="_blank" rel="noopener">Tiket IT</a></article>
+            <article class="contact-card"><div class="contact-icon"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div><b>Finance</b><span>Pelayanan Online Keuangan Mahasiswa</span><p>Informasi pembayaran dan administrasi keuangan mahasiswa.</p><a href="https://wa.me/6287897333999" target="_blank" rel="noopener">WhatsApp 0878-9733-3999</a><a href="mailto:finance.acct.krw@horizon.ac.id">finance.acct.krw@horizon.ac.id</a><small>Senin–Jumat · 08.00–16.00<br>Sabtu · 08.00–14.00</small><small>Pelayanan offline: One Stop Service (OSS)</small></article>
+            <article class="contact-card"><div class="contact-icon"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V5l8-3 8 3v15M2 20h20M8 9h2m4 0h2m-8 4h2m4 0h2m-6 7v-4h4v4"/></svg></div><b>GSD</b><span>General Service Department</span><p>Layanan umum dan bantuan terkait kebutuhan operasional kampus.</p><a href="https://wa.me/6285183107593" target="_blank" rel="noopener">WhatsApp 0851-8310-7593</a><a href="mailto:gsd.krw@horizon.ac.id">gsd.krw@horizon.ac.id</a><small>Senin–Jumat · 08.00–21.00<br>Sabtu · 08.00–20.00</small></article>
+            <article class="contact-card"><div class="contact-icon"><svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><b>CSDL</b><span>Career &amp; Student Development</span><p>Informasi pengembangan mahasiswa dan layanan CSDL.</p><a href="https://wa.me/62895385811353" target="_blank" rel="noopener">WhatsApp +62 895-3858-11353</a><a href="mailto:csdl.krw@horizon.ac.id">csdl.krw@horizon.ac.id</a><small>Senin–Jumat · 08.00–16.00<br>Sabtu · 08.00–14.00</small><a href="https://www.instagram.com/csdl.horizon/" target="_blank" rel="noopener">Instagram @csdl.horizon</a></article>
+          </div>
+          <div class="content-card" style="margin-top:18px"><h2>Standar Pelayanan</h2><ul><li>Pesan atau pertanyaan diupayakan mendapat respons awal dalam 24 jam.</li><li>Pesan yang diterima setelah pukul 16.00 diproses pada hari kerja berikutnya, sesuai ketentuan masing-masing departemen.</li><li>Saat menghubungi staff, sertakan nama, program studi, serta tujuan atau kendala secara jelas.</li></ul><p class="notice">Informasi kontak dan jam layanan ditranskripsikan dari materi informasi kampus yang diberikan. Mohon konfirmasi kembali kepada departemen terkait sebelum dijadikan data operasional resmi.</p></div>
+        </section>
+
+        <!-- PLANNER -->
+        <section id="plannerTab" class="tab-content hidden"><div class="page-heading"><p class="eyebrow">PERSONAL ORGANIZER</p><h1>Student <em>Planner</em></h1><p>Catat tugas, ujian, dan kegiatan pentingmu.</p></div><div class="content-card"><form id="plannerForm" class="form-grid"><label class="full">Nama kegiatan<input id="taskTitle" required placeholder="Contoh: Tugas Algoritma"></label><label>Jenis kegiatan<select id="taskType"><option>Tugas</option><option>Ujian</option><option>Presentasi</option><option>Kegiatan</option></select></label><label>Tanggal / tenggat<input id="taskDate" type="date" required></label><button class="primary-button full" type="submit">Tambah ke Planner</button></form></div><div id="plannerList" class="stack-list"></div></section>
+
+        <!-- PENGUMUMAN -->
+        <section id="announcementsTab" class="tab-content hidden"><div class="page-heading"><p class="eyebrow">CAMPUS UPDATE</p><h1>Pengumuman <em>Kampus</em></h1><p>Informasi akademik dan layanan kampus.</p></div><div class="stack-list" id="announcementsList"><article class="content-card"><span class="tag">INFORMASI AKADEMIK · CONTOH</span><h2>Periksa Jadwal Perkuliahan</h2><p>Mahasiswa diimbau memeriksa jadwal perkuliahan dan tenggat tugas secara berkala melalui Horizon Hub.</p></article><article class="content-card"><span class="tag">SARANA &amp; PRASARANA · CONTOH</span><h2>Layanan Peminjaman Ruangan</h2><p>Pengajuan peminjaman ruangan dan fasilitas dapat dilakukan melalui menu Peminjaman Ruangan. Pastikan tanggal dan waktu diisi dengan benar.</p></article></div></section>
+
+        <!-- RIWAYAT -->
+        <section id="historyTab" class="tab-content hidden"><div class="page-heading"><p class="eyebrow">MY REQUESTS</p><h1>Riwayat <em>Saya</em></h1><p>Pantau status pengajuan, pembatalan, dan pengembalianmu.</p><div class="notice">Booking yang sudah disetujui dapat dibatalkan mandiri paling lambat 24 jam sebelum jadwal dimulai. Pengajuan yang masih menunggu dapat dibatalkan kapan saja.</div></div><div id="studentHistory" class="stack-list"></div></section>
+        <section id="approvalTab" class="tab-content hidden"><div class="page-heading"><p class="eyebrow">ADMIN PANEL</p><h1>Persetujuan <em>Peminjaman</em></h1><p>Periksa dan proses permohonan mahasiswa.</p></div><div id="approvalList" class="stack-list"></div></section>
+        <section id="manageScheduleTab" class="tab-content hidden"><div class="page-heading"><p class="eyebrow">ACADEMIC MANAGEMENT</p><h1>Kelola <em>Jadwal Kuliah</em></h1><p>Pilih program studi dan kelas terlebih dahulu. Jadwal kelas terpilih akan muncul di samping dan dapat diubah oleh admin.</p></div><div class="content-card schedule-filter-card"><div class="form-grid"><label>Program Studi<select id="scheduleProgramFilter"><option value="IF">Informatika (IF)</option><option value="SI">Sistem Informasi (SI)</option><option value="MNG">Manajemen (MNG)</option></select></label><label>Kelas<select id="scheduleClassFilter"><option>IF-KA</option><option>IF-KM</option><option>IF-EC</option></select></label><label>Semester<select id="scheduleSemesterFilter"><option>Y1S1</option><option>Y1S2</option><option>Y2S1</option><option>Y2S2</option><option>Y3S1</option><option>Y3S2</option><option>Y4S1</option><option>Y4S2</option></select></label></div><p class="field-hint">Pilih program dan kelas untuk menampilkan jadwal yang sesuai.</p></div><div class="admin-schedule-workspace"><div class="content-card schedule-results-card"><div class="section-title schedule-results-heading"><div><span class="eyebrow">JADWAL KELAS TERPILIH</span><h2 id="scheduleSelectedTitle">Jadwal IF-KA</h2></div><div class="schedule-heading-actions"><span class="tag" id="scheduleSelectedCount">0 jadwal</span><button type="button" class="primary-button schedule-add-button" id="addScheduleButton">＋ Tambah Jadwal</button></div></div><div id="adminScheduleList" class="stack-list"><div class="empty-state">Pilih program studi dan kelas.</div></div></div><div class="content-card schedule-editor-card"><div class="section-title"><div><span class="eyebrow">EDITOR JADWAL</span><h2 id="scheduleEditorTitle">Tambah Jadwal</h2></div><button type="button" class="schedule-modal-close" id="closeScheduleModal" aria-label="Tutup editor jadwal">×</button></div><form id="adminScheduleForm" class="form-grid"><input type="hidden" id="adminScheduleEditIndex" value=""><label>Program / Kelas<input id="adminScheduleClass" required readonly></label><label>Semester<select id="adminScheduleSemester"><option>Y1S1</option><option>Y1S2</option><option>Y2S1</option><option>Y2S2</option><option>Y3S1</option><option>Y3S2</option><option>Y4S1</option><option>Y4S2</option></select></label><label>Hari<select id="adminScheduleDay"><option>Senin</option><option>Selasa</option><option>Rabu</option><option>Kamis</option><option>Jumat</option><option>Sabtu</option></select></label><label>Jam<input id="adminScheduleTime" required placeholder="18.30 – 20.10"></label><label>Kode Mata Kuliah<input id="adminScheduleCode" required placeholder="ICT 001"></label><label>Nama Mata Kuliah<input id="adminScheduleCourse" required placeholder="Algoritma"></label><label>Dosen<input id="adminScheduleLecturer" required placeholder="Nama dosen"></label><label>Ruangan / Mode<input id="adminScheduleRoom" required placeholder="E202 / Online"></label><div class="schedule-editor-actions full"><button class="primary-button" type="submit">Simpan Jadwal</button><button class="outline-button" type="button" id="cancelScheduleEdit">Batal / Reset</button></div></form></div></div><p class="notice">Data awal kelas IF-KA Y1S1 diambil dari jadwal prototype yang sebelumnya tampil pada akun mahasiswa. Perubahan, penambahan, dan penghapusan jadwal di sini akan menjadi sumber data yang sama untuk tampilan jadwal mahasiswa pada browser/perangkat ini.</p></section>
+        <section id="manageClassesTab" class="tab-content hidden"><div class="page-heading"><p class="eyebrow">ACADEMIC DIRECTORY</p><h1>Daftar <em>Kelas</em></h1><p>Daftar kelompok kelas berdasarkan program studi dan jenis kelas.</p></div><div class="content-card"><div class="form-grid"><label class="full">Cari kelas<input id="classDirectorySearch" placeholder="Cari IF-KA, Sistem Informasi, Kelas Malam..."></label></div></div><div id="adminClassDirectory" class="stack-list"></div><p class="notice">Daftar kelas mengikuti kelompok program yang disiapkan untuk prototipe. Jumlah mahasiswa dihitung dari akun yang sudah terdaftar.</p></section>
+        <section id="manageLecturersTab" class="tab-content hidden"><div class="page-heading"><p class="eyebrow">PEOPLE MANAGEMENT</p><h1>Kelola <em>Dosen &amp; Staff</em></h1><p>Kelola direktori dosen pengampu dan unit layanan kampus. Data yang sama ditampilkan pada akun mahasiswa.</p></div><div class="content-card"><form id="adminLecturerForm" class="form-grid"><input type="hidden" id="adminLecturerEditIndex" value=""><label>Nama lengkap<input id="adminLecturerName" required placeholder="Nama dosen / staff"></label><label>Jabatan / Bidang<input id="adminLecturerRole" required placeholder="Dosen Informatika / Staff Akademik"></label><label>Email<input id="adminLecturerEmail" type="email" placeholder="nama@kampus.ac.id"></label><label>Jam layanan<input id="adminLecturerHours" placeholder="Senin–Jumat · 09.00–16.00"></label><label class="full">Keterangan<textarea id="adminLecturerDescription" rows="2" placeholder="Informasi bidang atau layanan"></textarea></label><button class="primary-button full" type="submit">Simpan Data</button></form></div><div id="adminLecturerList" class="directory-grid"></div></section>
+        <section id="manageAnnouncementsTab" class="tab-content hidden"><div class="page-heading"><p class="eyebrow">CAMPUS COMMUNICATION</p><h1>Kelola <em>Informasi Kampus</em></h1><p>Buat informasi yang dapat dibaca seluruh mahasiswa.</p></div><div class="content-card"><form id="adminAnnouncementForm" class="form-grid"><label>Judul pengumuman<input id="adminAnnouncementTitle" required placeholder="Judul informasi"></label><label>Kategori<select id="adminAnnouncementCategory"><option>Akademik</option><option>Kemahasiswaan</option><option>Sarana &amp; Prasarana</option><option>Umum</option></select></label><label class="full">Isi informasi<textarea id="adminAnnouncementBody" rows="4" required placeholder="Tulis informasi untuk mahasiswa..."></textarea></label><button class="primary-button full" type="submit">Terbitkan Pengumuman</button></form></div><div id="adminAnnouncementList" class="stack-list"></div></section>
+        <section id="manageStudentsTab" class="tab-content hidden"><div class="page-heading"><p class="eyebrow">STUDENT DATABASE</p><h1>Data <em>Mahasiswa</em></h1><p>Daftar akun mahasiswa yang telah terdaftar pada prototipe.</p></div><div id="adminStudentsList" class="stack-list"></div></section>
+        <section id="manageRoomsTab" class="tab-content hidden"><div class="page-heading"><p class="eyebrow">FACILITY MANAGEMENT</p><h1>Daftar <em>Ruangan</em></h1><p>Pantau inventaris ruangan dan atur ruangan yang sementara tidak dapat dipinjam.</p></div><div class="content-card"><div class="form-grid"><label>Gedung<select id="adminRoomBuilding"><option value="ALL">Semua Gedung</option><option value="W">West Building</option><option value="E">East Building</option></select></label><label>Lantai<select id="adminRoomFloor"><option value="ALL">Semua Lantai</option></select></label><label class="full">Cari ruangan<input id="adminRoomSearch" placeholder="Contoh: W201, Lab, East Building"></label></div></div><div id="adminRoomDirectory" class="room-admin-grid"></div><p class="notice">Daftar ruang mengikuti direktori kampus yang tersedia. Kapasitas setiap ruangan wajib diisi berdasarkan data resmi oleh admin sebelum validasi jumlah peserta digunakan.</p></section>
+      </main>
+    </div>
+    <footer class="app-footer">UNIVERSITAS HORIZON INDONESIA <b>#Selalu Bersamamu</b></footer>
+  </div>
+
+  <div class="modal-backdrop hidden" id="assetDetailModal" role="dialog" aria-modal="true" aria-labelledby="assetDetailTitle">
+    <section class="class-modal asset-detail-modal">
+      <button type="button" class="modal-close" id="closeAssetDetail" aria-label="Tutup">×</button>
+      <p class="eyebrow">CAMPUS INVENTORY</p>
+      <div id="assetDetailContent"></div>
+    </section>
+  </div>
+
+  <div class="modal-backdrop hidden" id="classModal" role="dialog" aria-modal="true" aria-labelledby="classModalTitle">
+    <section class="class-modal">
+      <button type="button" class="modal-close" id="closeClassModal" aria-label="Tutup">×</button>
+      <p class="eyebrow">CLASS INFORMATION</p>
+      <div class="modal-title-row"><div><h2 id="classModalTitle">Detail Mata Kuliah</h2><p id="classModalCode">Kode mata kuliah</p></div><span class="status pending" id="classModalStatus">Akan datang</span></div>
+      <div class="class-detail-grid" id="classDetailGrid"></div>
+      <div class="class-modal-note" id="classModalNote">Informasi kelas.</div>
+      <div class="modal-actions"><button type="button" class="outline-button" id="closeClassModalBottom">Tutup</button><a class="primary-button hidden" id="joinClassButton" href="#" target="_blank" rel="noopener">Join Class ↗</a></div>
+    </section>
+  </div>
+
+  <div class="photo-crop-backdrop hidden" id="photoCropModal" role="dialog" aria-modal="true" aria-labelledby="photoCropTitle">
+    <section class="photo-crop-dialog">
+      <button type="button" class="photo-crop-close" id="photoCropClose" aria-label="Tutup">×</button>
+      <p class="eyebrow">PROFILE PHOTO</p><h2 id="photoCropTitle">Atur Foto Profil</h2>
+      <p class="photo-crop-help">Geser foto langsung dengan satu jari, cubit dengan dua jari untuk zoom, atau gunakan pengatur zoom.</p>
+      <div class="photo-crop-stage" id="photoCropStage"><img id="photoCropPreview" alt="Pratinjau crop foto profil"></div>
+      <label class="crop-control">Zoom <input id="photoCropZoom" type="range" min="1" max="3" step="0.01" value="1"></label>
+      <label class="crop-control">Posisi horizontal <input id="photoCropX" type="range" min="0" max="100" value="50"></label>
+      <label class="crop-control">Posisi vertikal <input id="photoCropY" type="range" min="0" max="100" value="50"></label>
+      <div class="photo-crop-actions"><button type="button" class="outline-button" id="photoCropCancel">Batal</button><button type="button" class="primary-button" id="photoCropApply">Terapkan</button></div>
+    </section>
+  </div>
+  <script src="script.js?v=92"></script>
+</body>
+</html>
